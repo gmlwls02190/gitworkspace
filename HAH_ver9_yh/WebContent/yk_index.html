@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+<link rel="shortcut icon" href="assets/yk_img/sun.ico">
+<script src="assets/yk_js/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+@import url("assets/yk_css/index.css");
+</style>
+</head>
+<body>
+
+	<div id="wrapper">
+		<div id = "top_blank">
+		<div id="music">
+			<audio autoplay controls>
+				<source src="assets/yk_audio/scandinavianz-nature-7504.mp3" type="audio/mp3">
+			</audio>
+		</div></div>
+		
+		<div id="header">
+			<!-- Start header [ Title ,menu ] -->			
+			<div class="title">
+				<a href = "#"><p>Komorebi</p></a>
+			</div>
+			
+			<!-- End -->
+			<!-- Start menu -->
+			<div id = "topMenu">
+				<ul class = "main">
+					<li><a  href="#">木漏れ日</a>
+					<ul class = "sub">
+						<li><a href="#">意味</a></li>
+						<li><a href="#">お知らせ</a></li>
+					</ul></li>
+					<li><a href="#">Diary</a>
+					<ul class = "sub">
+						<li><a href="#">Daily</a></li>
+						<li><a href="#">Jandi's Growing</a></li>
+					</ul></li>
+					<li><a href="#">Camera</a>
+					<ul class = "sub">
+						<li><a href="#">DSLR</a></li>
+						<li><a href="#">Film</a></li>
+					</ul></li>
+					<li><a href="#">Drawing</a>
+					<ul class = "sub">
+						<li><a href="#">Illust</a></li>
+					</ul></li>
+					<li><a class = "newWin" href="#" >Social</a></li>
+				</ul>
+			
+			<script type="text/javascript">
+			var openWindow = document.querySelector('.newWin');
+			openWindow.addEventListener('click', newWindow);
+			var win;
+			function newWindow() {
+				win = window.open("social.html", "", "width: 500, height:300");
+			}
+			</script>
+			</div>
+	
+			
+			<!-- Start content -->
+			<div id = "content">
+			</div>
+			
+			
+			
+			<!-- Start footer -->
+			<div id="footer">
+			<p>✿This site updated my story✿</p>
+			</div>
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HeeJin Gallery</title>
+<style type="text/css">
+@import url(assets/css/Heejin.css);
+</style>
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="topMenu">
+			<div class="logo"><img alt="HAHlogo" src="assets/css/img/hahlogo.png"></div>
+			<div id="menuBar">
+				<ul class="menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Sign in</a>
+						<ul class="hiddenMenu">
+							<li><a href="#" id="signup">Sign in/up</a></li>
+						</ul>
+					</li>
+
+					<li><a href="#">HAH</a>
+						<ul class="hiddenMenu">
+							<li><a href="elements2.html">HAH info</a></li>
+						</ul>
+					</li>
+
+					<li><a href="#">Team</a>
+						<ul class="hiddenMenu">
+							<li><a href="HeeJin.html">HeeJin</a></li>
+							<li><a href="#">SungMin</a></li>
+							<li><a href="https://blog.naver.com/ykouo" target="_blank">YeoKyeong</a></li>
+							<li><a href="yh_index.html">YunHyeuk</a></li>
+							<li><a href="https://blog.naver.com/jogjin37" target="_blank">GyeongJin</a></li>
+						</ul>
+					</li>
+
+					<li><a href="reference.html">Reference</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="first">
+			<div>
+			<h1>
+			<b>HeeJin Gallery</b>
+			<br>
+			내가그린 기린그림은 <b style="font-weight:400">긴 기린그림</b>
+			<br>
+			<b>하지만</b> 나는 기린을 못그리지
+			</h1>
+			<br>
+			<br>
+			<p>내가 게임 그래픽 디자인을 공부 했지만
+			<br>
+			계속해서 그려보니까 깨달았다
+			<br>
+			나는 이길이 아니구나 빨리 핸들을 돌려야겠다
+			<br>
+			나의 길은 자바다
+			<br>
+			자바 딱 대!!</p>
+			</div>
+		</div>
+		
+		<div id="second">
+		<div class="gallery">
+			<h2>주요 작품 <b style="font-weight:200">Gallery</b></h2>
+			<br>
+			<p>기린그림은 아니지만 내가 그린 그림</p>
+			<br>
+			<ul>
+				<li><img alt="my1" src="assets/css/img/img1.jpg" width="320" height="350"></li>
+				<li><img alt="my2" src="assets/css/img/img2.jpg" width="320" height="350"></li>
+				<li><img alt="my3" src="assets/css/img/img3.jpg" width="320" height="350"></li>
+				<li><img alt="my4" src="assets/css/img/img4.jpg" width="320" height="350"></li>
+				<li><img alt="my5" src="assets/css/img/img5.jpg" width="320" height="350"></li>
+			</ul>
+			</div>
+		</div>
+		<div id="third">
+		<div class="gallery">
+			<h2>참고 자료</h2>
+			<br>
+			<p>남이 그린 기린 그림</p>
+			<br>
+			<ul>
+				<li><img alt="other1" src="assets/css/img/img6.jpg" width="320" height="350"></li>
+				<li><img alt="other2" src="assets/css/img/img7.jpg" width="320" height="350"></li>
+				<li><img alt="other3" src="assets/css/img/img8.jpg" width="320" height="350"></li>
+				<li><img alt="other4" src="assets/css/img/img9.jpg" width="320" height="350"></li>
+				<li><img alt="other5" src="assets/css/img/img10.jpg" width="320" height="350"></li>
+			</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer">인재채용 | 제휴제안 | 이용약관 | 개인정보처리방침 | 고객센터 | ⓒ HAH Corp.</div>
+	
+<script type="text/javascript">
+$(document).ready(function(){
+var signup=document.getElementById('signup');
+signup.onclick=function(){
+window.open('elements1.html','','width=480,height=550');
+}
+});
+</script>
+</body>
+</html>

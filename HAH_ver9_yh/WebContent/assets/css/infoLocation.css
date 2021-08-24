@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+html {
+	scroll-behavior: smooth;
+}
+
+body, div, footer, span, p, h2, a {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 100%;
+	height: 920px;
+}
+
+.visual {
+	width: 100%;
+	/* height: 820px; */
+}
+
+.HAH {
+	float: left;
+	width: 70%;
+	/* height: 800px;
+	line-height: 250px; */
+}
+
+.hahFont {
+	font-size: 90px;
+	font-family: "Paytone One";
+	color: #FFF22D;
+	text-shadow: 5px 10px 3px #FF4A2D,0 -2px 1px #fff;
+}
+.fontLeft{
+	text-align: left;
+	margin-left: 50px;
+}
+.fontCenter{
+	text-align: center;
+}
+.fontRight{
+	text-align: right;
+	margin-right: 50px;
+}
+
+.abb {
+	font-size: 140px;
+	font-weight: bold;
+	font-family: "Paytone One";
+	color: #FFF22D;
+	text-shadow: 5px 10px 3px #FF4A2D,0 -2px 1px #fff;
+}
+
+.info {
+	float: left;
+	width: 27%;
+	text-align: center;
+	font-family: "Paytone One";
+	color: #FFF22D;
+	text-shadow: 5px 10px 3px #FF4A2D,0 -2px 1px #fff;
+}
+
+.info1 {
+	margin-top: 70px;
+}
+
+.info2 {
+	margin-top: 70px;
+}
+
+.delay {
+	opacity: 0;
+}
+
+/* .content {
+	margin-top: 5px;
+	height: 1000px;
+	text-align: center;
+} */
+
+.footer {
+	position: relative;
+	font-size: 15px;
+	z-index: 10;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 27px;
+	text-align: center;
+}
+
+.sidebar {
+	position: fixed;
+	z-index: 999;
+	width: 70px;
+	height: 150px;
+	right: 10px;
+	bottom: 100px;
+	line-height: 30px;
+	text-align: center;
+	opacity: 0.65;
+}
+
+.home{
+	margin-top: 25px;
+}

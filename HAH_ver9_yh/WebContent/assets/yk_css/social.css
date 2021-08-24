@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+body,div,ul,li,a,p{
+	margin : 0;
+	padding:0;
+}
+
+#wrapper{
+	
+}
+.returnMain{
+	width: 100%;
+	height: 50px;
+	background: #FFD8CC;	
+}
+.homeButton{
+	display: inline-block;
+	float: right;
+	width: 100px;
+	line-height: 200px;
+	
+}
+.returnMain img{
+	width: 50px;
+	height: 50px;
+}
+#content{
+	width: 100%;
+	height: 100%;
+	align-content:center;
+	background: #FCD8D4;
+}
+#menuTitle{
+	width:100%;
+	height: 350px;
+	background: #FCD8D4;
+	color: #FDF6F0;
+	
+}
+#menuTitle p{
+	width: 100%;
+	font-family: 'Tangerine', cursive;
+	line-height: 350px;
+	font-size: 75px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#menu{
+	width: 100%;
+	height: 3%;
+	background: #FDF6F0;
+}
+.memo{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	color:#F5C6AA;
+}
+.memo p{
+	text-align: center;
+	background: #FDF6F0;
+	font-size: 20px;
+	font-family: 'Fredoka One', cursive;
+}
+#socialMenu{
+	margin: 0 auto;
+	display:block;
+	justify-content:center;
+	width: 50%;
+	height: 80%;
+	/* background: #FDF6F0; */
+}
+#socialMenu li{
+	display: block;
+	width: 100%;
+	height: 19%;
+	text-align: center;
+	list-style-type: none;
+	background: #FDF6F0;
+	border: 2px dotted #F5C6AA;
+}
+#socialMenu img{
+	width: 60px;
+	height: 60px;	
+	padding: 40px;
+}
+#footer{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	color: #FDF6F0;
+	background: #F5C6AA;
+	text-align: center;
+}
+
+#home {
+	margin: 10px;
+	float: right;
+}
+
+#home a {
+	color: #FFFEED;
+	font-size: 30px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+/*font-family: 'Fredoka One', cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+/* font-family: 'Concert One', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+/* font-family: 'Tangerine', cursive; */

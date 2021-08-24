@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body, div, a, span, ul, li, h4, br{
+	margin: 0;
+	padding: 0;
+}
+#wrapper1 {
+  /* background: url('img/skybg2.jpg') no-repeat;
+  background-size: cover; */
+  background:#FFF4C7; /* 바탕색 */
+  background-size: cover;
+  font-family: 'Faustina', serif;
+  text-align: center;
+}
+#home {
+	margin: 10px;
+	float: right;
+}
+
+#home a {
+	font-family: "Paytone One";
+	color: #FFFEED;
+	font-size: 30px;
+}
+
+#content h4 {
+	font-size: 50px;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+#content span {
+	font-size: 25px;
+	font-weight: bold;
+	background: linear-gradient(to top, #FFF22D 40%, transparent 40%);
+}
+
+#content a {
+	font-size: 20px;
+	font-style: italic;
+}
+
+#content a:hover {
+	background: linear-gradient(to top, #FF4A2D 20%, transparent 20%);
+}
+.footer{
+	height: 30px;
+	text-align: center;
+	background-color: #FF4A2D;
+	line-height: 30px;
+}

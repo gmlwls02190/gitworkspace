@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to HAH👩🏻‍🚀</title>
+<link rel="shortcut icon" href="assets/css/img/data.ico">
+
+<!--  이미지 슬라이드  -->
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!--  JQUERY & MAIN.JS 불러오기  -->
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/script/main.js"></script>
+
+<!-- MAIN.CSS 불러오기   css 적용이 안되면 css.하고 ?after 붙여서 확인! -->
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/mediaQuery.css">
+
+</head>
+<body>
+	<div id="wrapper">
+
+		<!-- 음악재생 -->
+		<div id="muse">
+			<audio autoplay controls>
+				<source src="assets/audio/061._Spring_Sunshine.mp3" type="audio/mp3">
+			</audio>
+		</div>
+		<!-- 왼쪽 사이드 메뉴 시작 -->
+		<div id="menu-container">
+			<div id="menu-wrapper">
+				<!-- 三표시 있는 제일 상단 -->
+				<div id="hamburger-menu">
+					<span></span><span></span><span></span>
+				</div>
+			</div>
+			<!-- 三 표시 밑 부분부터 메뉴 -->
+			<ul class="menu-list accordion">
+				<!-- 첫번째 로그인 메뉴 -->
+				<li id="nav1" class="toggle accordion-toggle"><span
+					class="icon-plus"></span> <a class="menu-link" href="#">Sign In</a></li>
+				<!-- 아코디언으로 펼쳐지는 곳 -->
+				<ul class="menu-submenu accordion-content">
+					<li><a class="head" href="#" id="signup">Sign in/up</a></li>
+				</ul>
+
+				<!-- 두번째 HAH 소개 메뉴 -->
+				<li id="nav2" class="toggle accordion-toggle"><span
+					class="icon-plus"></span> <a class="menu-link" href="#">HAH</a></li>
+				<!-- 아코디언으로 펼쳐지는 곳 -->
+				<ul class="menu-submenu accordion-content">
+					<li><a class="head" href="elements2.html">Introduction</a></li>
+				</ul>
+
+				<!-- 세번째 팀 멤버 소개 메뉴 -->
+				<li id="nav3" class="toggle accordion-toggle"><span
+					class="icon-plus"></span> <a class="menu-link" href="#">Team</a></li>
+				<!-- 아코디언으로 펼쳐지는 곳 -->
+				<ul class="menu-submenu accordion-content">
+					
+					<li><a class="head" href="yh_index.html" >YunHyeuk</a></li>
+					<li><a class="head" href="#">SungMin</a></li>
+					<li><a class="head" href="HeeJin.html"
+						target="_blank">HeeJin</a></li>
+					<li><a class="head" href="yk_index.html"
+						target="_blank">YeoKyeong</a></li>
+					<li><a class="head" href="https://blog.naver.com/jogjin37"
+						target="_blank">GyeongJin</a></li>
+				</ul>
+				<!-- 여기 # 부분에 개인 홈페이지 or 블로그 넣으면 됩니다! -->
+
+				<!-- 네번째 참조사항 메뉴 -->
+				<li id="nav1" class="toggle accordion-toggle"><span
+					class="icon-plus"></span> <a class="menu-link"
+					href="reference.html">Reference</a></li>
+			</ul>
+		</div>
+		<!-- ---------------------------------------------------------------- 메뉴 바 아코디언 끝-->
+
+		<!-- 정중앙 팀이름 -->
+		<div id="logo">
+			<span class="sizeDown"><a href="#">Higher<br>And<br>Higher
+			</a></span>
+		</div>
+
+		<br> <br>
+
+		<!-- 사진 슬라이드  -->
+		<div class="swiper-container moveImg">
+			<!-- 추가로 필요한 wrapper -->
+			<div class="swiper-wrapper">
+				<!-- 사진 슬라이드 -->
+				<div class="swiper-slide">
+					<a href="yh_index.html"><img src="assets/css/img/y.png" alt="윤혁"
+						title="YunHyeuk" class="headImg"></a>
+				</div>
+
+				<div class="swiper-slide">
+					<a href="https://blog.naver.com/jogjin37"><img
+						src="assets/css/img/gjgj.jpg" alt="경진" title="GyeongJin" class="headImg"></a>
+				</div>
+
+				<div class="swiper-slide">
+					<a href="yk_index.html"><img
+						src="assets/css/img/yk.jpg" alt="여경" title="YeoKyeong" class="headImg"></a>
+				</div>
+
+				<div class="swiper-slide">
+					<a href="#"><img src="assets/css/img/sm.jpg" alt="성민"
+						title="SungMin" class="headImg"></a>
+				</div>
+				<div class="swiper-slide">
+					<a href="HeeJin.html"><img src="assets/css/img/hj.png" alt="희진"
+						title="HeeJin" class="headImg"></a>
+				</div>
+				<!-- 여기도 #부분에 개인 홈페이지 or 블로그 넣으면 됩니다! -->
+			</div>
+
+			<!-- <  > 사진 양 옆 버튼   -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+
+		<br>
+
+	</div>
+	<!-- 전체 큰 wrapper 끝! -->
+
+	<footer class="footer">인재채용 | 제휴제안 | 이용약관 | 개인정보처리방침 | 고객센터 | ⓒ HAH Corp.</footer>	
+
+	<script src="assets/script/plugIn.js"></script>
+	<script src="assets/script/newWindow.js"></script>
+
+</body>
+</html>

@@ -28,6 +28,9 @@
 		user = prompt("글 정보 변경을 위해 작성자아이디를 입력하시오.");
 		document.location.href = "control.jsp?action=edit&mnum=" + mnum + "&user=" + user;
 	}
+	function content(mnum){
+		document.location.href = "control.jsp?action=content&mnum=" + mnum;
+	}
 </script>
 </head>
 <body class="is-preload">
@@ -71,8 +74,16 @@
 					<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
 					<div class="table-wrapper">
 
-						<a href="form.jsp">글 등록</a> <a href="control.jsp?action=logout">로그아웃</a>
+						<a href="control.jsp?action=list">전체 글 보기</a> <a href="control.jsp?action=mylist">내 글 보기</a> <a href="form.jsp">글 등록</a> <a href="control.jsp?action=login">로그아웃</a>
 						<hr>
+						<form action="control.jsp?action=search" method="post" name="form4">
+							<table>
+								<tr>
+									<td><input type="text" name="search" placeholder="검색내용입력"></td>
+									<td><input type="submit" value="검색"></td>
+								</tr>
+							</table>
+						</form>
 						<table>
 							<tr>
 								<th>글 번호</th>
@@ -87,7 +98,7 @@
 								<!-- "control.jsp?action=edit&mnum=<%=vo.getMnum()%>" -->
 								<td><a href="javascript:check(<%=vo.getMnum()%>)"><%=vo.getMnum()%></a></td>
 								<!-- 글 변경을 위한 비밀번호 등의 인증작업처리 필요! -->
-								<td><%=vo.getTitle()%></td>
+								<td><a href="javascript:content(<%=vo.getMnum()%>)"><%=vo.getTitle()%></a></td>
 								<td><%=vo.getWriter()%></td>
 								<td><%=vo.getWdate()%></td>
 							</tr>

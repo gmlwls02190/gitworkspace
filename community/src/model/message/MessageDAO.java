@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.common.JDBC;
+import model.wuser.WuserVO;
 
 public class MessageDAO {
 
@@ -38,8 +39,100 @@ public class MessageDAO {
 		}
 		return datas;
 	}
+	
+	public ArrayList<MessageVO> getMyDBList(WuserVO vo){
+		Connection conn=JDBC.getConnection();
+		ArrayList<MessageVO> datas=new ArrayList();
+		PreparedStatement pstmt=null;
+		try{
+			String sql="select * from message where userid=? order by mnum desc";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUserid());
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				MessageVO data=new MessageVO();
+				data.setContent(rs.getString("content"));
+				data.setMnum(rs.getInt("mnum"));
+				data.setTitle(rs.getString("title"));
+				data.setWdate(rs.getDate("wdate"));
+				data.setWriter(rs.getString("writer"));
+				data.setUserid(rs.getString("userid"));
+				datas.add(data);
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			System.out.println("getMyDBList()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			JDBC.close(conn, pstmt);
+		}
+		return datas;
+	}
+	
+	public ArrayList<MessageVO> searchDBList(String str){
+		Connection conn=JDBC.getConnection();
+		ArrayList<MessageVO> datas=new ArrayList();
+		PreparedStatement pstmt=null;
+		try{
+			String sql="select * from message where lower(title) like lower(?)"; // 최근 게시글 상단 배치
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+str+"%");
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				MessageVO vo=new MessageVO();
+				vo.setContent(rs.getString("content"));
+				vo.setMnum(rs.getInt("mnum"));
+				vo.setTitle(rs.getString("title"));
+				vo.setWdate(rs.getDate("wdate"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setUserid(rs.getString("userid"));
+				datas.add(vo);
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			System.out.println("searchDBList()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			JDBC.close(conn, pstmt);
+		}
+		return datas;
+	}
 
 	public MessageVO getDBData(MessageVO vo){
+		Connection conn=JDBC.getConnection();
+		MessageVO data=null;
+		PreparedStatement pstmt=null;
+		try{
+			String sql="select * from message where mnum=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getMnum());
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()){
+				data=new MessageVO();
+				data.setContent(rs.getString("content"));
+				data.setMnum(rs.getInt("mnum"));
+				data.setTitle(rs.getString("title"));
+				data.setWdate(rs.getDate("wdate"));
+				data.setWriter(rs.getString("writer"));
+				data.setUserid(rs.getString("userid"));
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			System.out.println("getDBData()에서 출력");
+			e.printStackTrace();
+		}
+		finally {
+			JDBC.close(conn, pstmt);
+		}
+		return data;
+	}
+	
+	public MessageVO showDBData(MessageVO vo){
 		Connection conn=JDBC.getConnection();
 		MessageVO data=null;
 		PreparedStatement pstmt=null;

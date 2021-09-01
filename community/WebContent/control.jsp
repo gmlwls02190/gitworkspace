@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*,model.message.*,model.wuser.*"
-	errorPage="error.jsp"%>
+	pageEncoding="UTF-8" import="java.util.*,model.message.*,model.wuser.*,model.comment.*" errorPage="error.jsp"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -9,12 +8,17 @@
 <jsp:useBean id="messageVO" class="model.message.MessageVO" />
 <jsp:setProperty property="*" name="messageVO" />
 
+<jsp:useBean id="commentDAO" class="model.comment.CommentDAO" />
+<jsp:useBean id="commentVO" class="model.comment.CommentVO" />
+<jsp:setProperty property="*" name="commentVO" />
+
 <jsp:useBean id="wuserDAO" class="model.wuser.WuserDAO" scope="application" />
 <jsp:useBean id="wuserVO" class="model.wuser.WuserVO"  scope="session"/>
 <jsp:setProperty property="*" name="wuserVO" />
 <%
 	// 컨트롤러를 호출했을때의 요청 파라미터를 분석
 	String action = request.getParameter("action");
+	String search = request.getParameter("search");
 	System.out.println(action);
 	if (action.equals("list")) {
 		// list.jsp
@@ -27,6 +31,27 @@
 			out.println("<script>alert('올바르지 않은 계정입니다!');history.go(-1);</script>");
 		}
 	}
+ 	else if(action.equals("mylist")){
+		if (wuserDAO.checkUser(wuserVO)) {
+			ArrayList<MessageVO> datas = messageDAO.getMyDBList(wuserVO);
+			request.setAttribute("datas", datas); // 1.set 다음페이지에서필요해서  2.request application을 사용해도 되나 서버부담을 덜어주기위해
+			pageContext.forward("list.jsp");
+		}
+		else {
+			out.println("<script>alert('올바르지 않은 계정입니다!');history.go(-1);</script>");
+		}
+	}
+ 	else if(action.equals("search")){
+ 		if (wuserDAO.checkUser(wuserVO)) {
+ 			System.out.println(search);
+			ArrayList<MessageVO> datas = messageDAO.searchDBList(search);
+			request.setAttribute("datas", datas); // 1.set 다음페이지에서필요해서  2.request application을 사용해도 되나 서버부담을 덜어주기위해
+			pageContext.forward("list.jsp");
+		}
+		else {
+			out.println("<script>alert('올바르지 않은 계정입니다!');history.go(-1);</script>");
+		}
+ 	}
 	else if (action.equals("insert")) {
 		// dao.insert()
 		if (wuserDAO.getUserData(wuserVO).getUname().equals(request.getParameter("writer"))) {
@@ -81,23 +106,6 @@
 		else {
 			out.println("<script>alert('수정권한이 없습니다!');history.go(-1);</script>");
 		}
-		
-		
-		/* if(session.getAttribute("mem")==null){
-			// 로그인 안함 뒤로가기
-		}
-		else{
-			WuserVO vo=(WuserVO)session.getAttribute("mem");
-			if(vo.getUserpw().equals(request.getParameter("userpw"))){
-				MessageVO data=messageDAO.getDBData(messageVO);
-				request.setAttribute("data", data);
-				pageContext.forward("edit.jsp");
-			}
-			else{
-				// 입력오류
-			}
-		} */
-		
 	}
 	else if (action.equals("login")) {
 		pageContext.forward("login.jsp");
@@ -113,6 +121,26 @@
 	else if (action.equals("logout")) {
 		session.invalidate();
 		pageContext.forward("login.jsp");
+	}
+	else if(action.equals("content")){
+		MessageVO data = messageDAO.getDBData(messageVO);
+		request.setAttribute("data", data);
+		ArrayList<CommentVO> cdatas = commentDAO.getCommentList(messageVO);
+		request.setAttribute("cdatas", cdatas);
+		pageContext.forward("content.jsp");
+	}
+	else if(action.equals("comment")){
+		if (commentDAO.insertComment(commentVO)) {
+			/* System.out.println("check"); */
+			/* ArrayList<CommentVO> cdatas = commentDAO.getCommentList(messageVO);
+			request.setAttribute("cdatas", cdatas); */
+			int mnum=Integer.parseInt(request.getParameter("mnum"));
+			out.println("<script>alert('댓글이 등록되었습니다!');</script>");
+			response.sendRedirect("control.jsp?action=content&mnum="+mnum);
+		}
+		else {
+			throw new Exception("댓글 추가 오류 발생!");
+		}
 	}
 	else {
 		out.println("<script>alert('파라미터 확인!');history.go(-1);</script>");

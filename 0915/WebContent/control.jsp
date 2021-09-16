@@ -10,25 +10,45 @@
 <jsp:useBean id="uVO" class="model.user.UserVO" />
 <jsp:setProperty property="*" name="uVO"/>
 <%
+	System.out.println("=========");	
+	System.out.println("컨트롤시작");
+	System.out.println("=========");
 	String action=request.getParameter("action");
-	String url="control.jsp?action=main";
+	String url="main.jsp?";
 	String url2="control.jsp?action=mainAll";
-	/* System.out.println(request.getAttribute("mcnt")+"check"); */
+	String url3="control.jsp?action=otherMain";
 	String mcntt=request.getParameter("mcnt");
 	String id=request.getParameter("userid");
+	String uid=request.getParameter("uid");
+	String rid=request.getParameter("rid");
+	String mid=request.getParameter("mid");
+	String stat=request.getParameter("stat");
+	request.setAttribute("stat", stat);
+	System.out.println("stat: "+stat);
 	int mcnt=1;
 	if(mcntt!=null){
 		mcnt=Integer.parseInt(mcntt);
 	}
 	url= url+ "&mcnt="+mcnt;
 	url2= url2+ "&mcnt="+mcnt;
+	url3= url3+ "&mcnt="+mcnt;
 	String mem=(String)session.getAttribute("mem");
 	if(mem!=null){
-		url= url+ "&mem="+mem;
 		url2= url2+ "&mem="+mem;
 	}
-	
-	System.out.println(action);
+	if(id!=null){
+		url= url+ "&mem="+id;
+		url3= url3+ "&mem="+id;
+	}
+	String cntt=request.getParameter("cnt");
+	int cnt=1;
+	if(cntt!=null){
+		cnt=Integer.parseInt(cntt);
+	}
+	System.out.println(cnt);
+	url= url+ "&cnt="+cnt;
+	url3= url3+ "&cnt="+cnt;
+	System.out.println("action:"+action);
 	
 	if(action.equals("main")){
 		if(session.getAttribute("mem")==null){
@@ -38,6 +58,9 @@
 			request.setAttribute("datas", datas);
 			request.setAttribute("newUsers", newUsers);
 			request.setAttribute("mcnt", mcnt);
+			int memcnt=mDAO.selectTestCount(mem);
+			request.setAttribute("memcnt", memcnt);
+			request.setAttribute("cnt", cnt);
 			
 			pageContext.forward("main.jsp");
 		}
@@ -49,20 +72,43 @@
 			request.setAttribute("newUsers", newUsers);
 			request.setAttribute("mcnt", mcnt);
 			session.setAttribute("more", "more");
+			int memcnt=mDAO.selectTestCount(mem);
+			request.setAttribute("memcnt", memcnt);
+			request.setAttribute("cnt", cnt);
+			
 			pageContext.forward("main.jsp");
 		}
 		
 	}
 	else if(action.equals("otherMain")){
-		System.out.println(id);
-		ArrayList<MsgSet> datas=mDAO.selectAll(id, mcnt);
-		ArrayList<UserVO> newUsers=uDAO.selectAll();
-		request.setAttribute("id", id);
-		request.setAttribute("datas", datas);
-		request.setAttribute("newUsers", newUsers);
-		request.setAttribute("mcnt", mcnt);
-		session.setAttribute("more", "other");
-		pageContext.forward("main.jsp?mcnt="+mcnt+"&mem"+id);
+		if(uid!=null){
+			System.out.println("=============");
+			ArrayList<MsgSet> datas=mDAO.selectAll(uid, mcnt);
+			ArrayList<UserVO> newUsers=uDAO.selectAll();
+			request.setAttribute("id", id);
+			request.setAttribute("datas", datas);
+			request.setAttribute("newUsers", newUsers);
+			request.setAttribute("mcnt", mcnt);
+			session.setAttribute("more", "other");
+			int idcnt=mDAO.selectTestCount(uid);
+			request.setAttribute("idcnt", idcnt);
+			request.setAttribute("cnt", cnt);
+			pageContext.forward(url);
+		}
+		else{
+			System.out.println("=============");
+			ArrayList<MsgSet> datas=mDAO.selectAll(id, mcnt);
+			ArrayList<UserVO> newUsers=uDAO.selectAll();
+			request.setAttribute("id", id);
+			request.setAttribute("datas", datas);
+			request.setAttribute("newUsers", newUsers);
+			request.setAttribute("mcnt", mcnt);
+			session.setAttribute("more", "other");
+			int idcnt=mDAO.selectTestCount(id);
+			request.setAttribute("idcnt", idcnt);
+			request.setAttribute("cnt", cnt);
+			pageContext.forward(url);
+		}
 	}
 	else if(action.equals("mainAll")){
 		ArrayList<MsgSet> datas=mDAO.selectAll(null, mcnt);
@@ -71,6 +117,9 @@
 		request.setAttribute("datas", datas);
 		request.setAttribute("newUsers", newUsers);
 		request.setAttribute("mcnt", mcnt);
+		int memcnt=mDAO.selectTestCount(null);
+		request.setAttribute("memcnt", memcnt);
+		request.setAttribute("cnt", cnt);
 		
 		pageContext.forward("main.jsp");
 	}
@@ -81,8 +130,8 @@
 			response.sendRedirect(url2);
 		}
 		else{
-			System.out.println(uVO);
-			System.out.println(uDAO.login(uVO));
+			/* System.out.println(uVO);
+			System.out.println(uDAO.login(uVO)); */
 			response.sendRedirect("control.jsp?action=main");
 		}
 	}
@@ -113,9 +162,15 @@
 		}
 	}
 	else if(action.equals("updateM")){
-		System.out.println(mVO);
+		/* System.out.println(mVO); */
 		mDAO.update(mVO);
-		response.sendRedirect(url2);
+		System.out.println("cnt: "+cnt);
+		if(stat==null){
+			response.sendRedirect("control.jsp?action=otherMain&userid="+id+"&mcnt="+mcnt+"&cnt="+cnt);
+		}
+		else{
+			response.sendRedirect("control.jsp?action=mainAll&userid="+id+"&mcnt="+mcnt+"&cnt="+cnt+"&stat="+stat);
+		}
 	}
 	else if(action.equals("deleteM")){
 		mDAO.delete(mVO);
@@ -123,8 +178,13 @@
 	}
 	else if(action.equals("insertR")){
 		if(rDAO.insert(rVO)){
-			System.out.println("fasdfsaf");
-			response.sendRedirect(url2);
+			System.out.println("=================");
+			if(stat==null){
+				response.sendRedirect("control.jsp?action=otherMain&mcnt="+mcnt+"&uid="+uid+"&cnt="+cnt+"&mid="+mid);
+			}
+			else{
+				response.sendRedirect("control.jsp?action=mainAll&mcnt="+mcnt+"&uid="+uid+"&cnt="+cnt+"&mid="+mid+"&stat="+stat);
+			}
 		}
 		else{
 			out.println("<script>alert('추가오류');history.go(-1);</script>");
@@ -133,7 +193,13 @@
 	else if(action.equals("deleteR")){
 		if(mem.equals(rDAO.selectOne(rVO).getUserid())){
 			if(rDAO.delete(rVO)){
-				response.sendRedirect(url2);
+				if(stat==null){
+					System.out.println("uid: "+uid);
+					response.sendRedirect("control.jsp?action=otherMain&rid="+rid+"&mcnt="+mcnt+"&cnt="+cnt+"&uid="+uid);
+				}
+				else{
+					response.sendRedirect("control.jsp?action=mainAll&rid="+rid+"&mcnt="+mcnt+"&cnt="+cnt+"&stat="+stat);
+				}
 			}
 			else{
 				out.println("<script>alert('삭제오류');history.go(-1);</script>");
@@ -145,11 +211,7 @@
 	}
 	else if(action.equals("insertU")){
 		if(uDAO.insert(uVO)){
-			%>
-			<script type="text/javascript">
-				window.close();
-			</script>
-			<%
+			out.println("<script>window.close();</script>");
 		}
 		else{
 			out.println("<script>alert('회원가입오류');history.go(-1);</script>");

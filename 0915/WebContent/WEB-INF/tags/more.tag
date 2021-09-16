@@ -2,11 +2,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:if test="${more eq 'mainAll'}">
-<a href="control.jsp?action=mainAll&mcnt=${mcnt+1}&mem=${mem}">더보기</a>
+	<c:if test="${cnt < memcnt}">
+	<li><a href="control.jsp?action=mainAll&mcnt=${mcnt+1}&mem=${mem}&cnt=${cnt+1}&stat=${stat}">더보기</a></li>
+	</c:if>
+<%-- <a href="control.jsp?action=mainAll&mcnt=${mcnt+1}&mem=${mem}&cnt=${cnt+1}">더보기</a> --%>
 </c:if>
 <c:if test="${more eq 'more'}">
-<a href="control.jsp?action=main&mcnt=${mcnt+1}&mem=${mem}">더보기</a>
+	<c:if test="${cnt < memcnt}">
+	<li><a href="control.jsp?action=main&mcnt=${mcnt+1}&mem=${mem}&cnt=${cnt+1}">더보기</a></li>
+	</c:if>
+<%-- <a href="control.jsp?action=main&mcnt=${mcnt+1}&mem=${mem}&cnt=${cnt+1}">더보기</a> --%>
 </c:if>
 <c:if test="${more eq 'other'}">
-<a href="control.jsp?action=otherMain&mcnt=${mcnt+1}&userid=${id}">더보기</a>
+	<c:if test="${cnt < idcnt}">
+	<li><a href="control.jsp?action=otherMain&mcnt=${mcnt+1}&userid=${id}&cnt=${cnt+1}">더보기</a></li>
+	</c:if>
+<%-- <a href="control.jsp?action=otherMain&mcnt=${mcnt+1}&userid=${id}&cnt=${cnt+1}">더보기</a> --%>
 </c:if>

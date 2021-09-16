@@ -5,12 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	function delM(){
-		document.form2.action.value="deleteM";
-		document.form2.submit();
-	}
-</script>
+<script type="text/javascript" src="script/editM.js"></script>
 </head>
 <body>
 

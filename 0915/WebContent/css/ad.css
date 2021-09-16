@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.main{
+	width:60%;
+	display: inline-block;
+}
+.ad{
+	float: right;
+}
+.fav{
+	text-decoration:none;
+}

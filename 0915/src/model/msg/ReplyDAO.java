@@ -55,13 +55,17 @@ public class ReplyDAO {
 		Connection conn = JNDI.getConnection();
 		PreparedStatement pstmt= null;
 		String sql = "insert into reply(rid, mid,userid,rmsg,wdate) values((select nvl(max(rid),0)+1 from reply),?,?,?,sysdate)";
+		String sql2 = "update message set replycount=replycount+1 where mid=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getMid());
 			pstmt.setString(2, vo.getUserid());
 			pstmt.setString(3, vo.getRmsg());
 			pstmt.executeUpdate();
-			System.out.println("csdfaf");
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, vo.getMid());
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;

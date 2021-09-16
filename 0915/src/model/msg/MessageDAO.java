@@ -117,13 +117,22 @@ public class MessageDAO {
 		return datas;
 	}
 	
-	public int selectTestCount() {
+	public int selectTestCount(String uid) {
 		Connection conn = JNDI.getConnection();
         PreparedStatement pstmt = null;
         int result =0 ;
-        String sql = "select count(*) as cnt from message";
+        /*String sql = "select count(*) as cnt from message";*/
         try {
-            pstmt = conn.prepareStatement(sql);
+        	if(uid==null || uid=="") {
+        		String sql = "select count(*) as cnt from message";
+        		pstmt = conn.prepareStatement(sql);
+        	}
+        	else {
+        		String sql = "select count(*) as cnt from message where userid=?";
+        		pstmt = conn.prepareStatement(sql);
+        		pstmt.setString(1, uid);
+        	}
+            /*pstmt = conn.prepareStatement(sql);*/
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()) {
                 result = rs.getInt("cnt");
@@ -237,7 +246,6 @@ public class MessageDAO {
 				sql = "update message set favcount=favcount+1 where mid=?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, vo.getMid());
-				System.out.println("fas");
 			}
 			else {
 				sql = "update message set favcount=favcount+1, msg=? where mid=?";

@@ -19,7 +19,7 @@
 </c:forEach>
 
 <div>
-	<%=pageBar %>
+	<%=pageBar%>
 </div>
 
 </body>

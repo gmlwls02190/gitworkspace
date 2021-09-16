@@ -31,7 +31,7 @@ ArrayList<MessageVO> msgLists = mDAO.selectTest(cPage, numPerPage);
 
 //페이지 구성해보기
 //전체자료수를 확인
-int totalList = mDAO.selectTestCount();
+int totalList = mDAO.selectTestCount(null);
 //전체페이수
 int totalPage = (int)Math.ceil((double)totalList/numPerPage);
 //페이지바 html코드 누적변수
@@ -42,10 +42,10 @@ int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 int pageEnd = pageNo+pageBarSize-1;
 //페이지바를 구성
 if(pageNo==1) {
-  pageBar +="<span>[이전]</span>";
+  pageBar +="<span>[이전]&nbsp;</span>";
 }else {
   pageBar += "<a href='"+request.getContextPath()+
-          "/control2.jsp?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]</a>";
+          "/control2.jsp?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]&nbsp;</a>";
 }
 //선택페이지 만들기
 while(!(pageNo>pageEnd || pageNo>totalPage))
@@ -54,17 +54,17 @@ while(!(pageNo>pageEnd || pageNo>totalPage))
       pageBar += "<span class='cPage'>"+pageNo+"</span>";
   }else {
       pageBar += "<a href='"+request.getContextPath()+
-              "/control2.jsp?cPage="+(pageNo)+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
+              "/control2.jsp?cPage="+(pageNo)+"&numPerPage="+numPerPage+"'>"+"&nbsp;"+pageNo+"&nbsp;"+"</a>";
   }
   pageNo++;
 }
 //[다음] 구현
 if(pageNo>totalPage) 
 {
-  pageBar += "<span>[다음]</span>";
+  pageBar += "<span>&nbsp;[다음]</span>";
 }else {
   pageBar +="<a href='"+request.getContextPath()+
-          "/control2.jsp?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
+          "/control2.jsp?cPage="+pageNo+"&numPerPage="+numPerPage+"'>&nbsp;[다음]</a>";
 }
 request.setAttribute("list", msgLists);
 request.setAttribute("cPage", cPage);

@@ -69,7 +69,7 @@ public class UserDAO {
 		ArrayList<UserVO> datas = new ArrayList<UserVO>();
 		Connection conn = JNDI.getConnection();
 		PreparedStatement pstmt= null;
-		String sql = "select * from users where rownum <= 10 order by wdate desc";
+		String sql = "select * from (select * from users order by wdate desc) where rownum <= 3";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();

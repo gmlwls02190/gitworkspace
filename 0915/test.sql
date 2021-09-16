@@ -1,5 +1,5 @@
 select * from all_tables;
-drop table message;
+drop table member;
 drop table reply;
 create table users(
 	userid varchar(15) primary key,
@@ -46,8 +46,8 @@ select * from reply;
 select * from message;
 select * from users;
 delete from users where userid = 'zxc';
-delete from users where userid = 'qwer';
-delete from users where userid = 'asdf';
+delete from users where userid = 'asd';
+
 select * from message where rownum <= 10 order by mid desc;
 select * from (select * from message order by mid desc) where rownum between 2 and 4;
 

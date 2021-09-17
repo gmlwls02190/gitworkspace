@@ -2,13 +2,13 @@
 		document.location.href="insertM.jsp";
 	}
 	function editM(mid){
-		document.location.href="control.jsp?action=editM&mid="+mid;
+		document.location.href="editM.do?mid="+mid;
 	}
 	function delR(rid){
-		document.location.href="control.jsp?action=deleteR&rid="+rid;
+		document.location.href="deleteR.do?rid="+rid;
 	}
 	function myPage(){
-		document.location.href="control.jsp?action=main";
+		document.location.href="main.do";
 	}
 	function reg(){
 		openWin();

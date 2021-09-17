@@ -1,4 +1,3 @@
-	function delM(){
-		document.form2.action.value="deleteM";
-		document.form2.submit();
+	function delM(mid){
+		document.location.href="deleteM.do?mid="+mid;
 	}

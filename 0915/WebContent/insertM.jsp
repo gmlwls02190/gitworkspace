@@ -8,7 +8,7 @@
 </head>
 <body>
 ${mem}
-<form action="control.jsp?action=insertM" method="post">
+<form action="insertM.do" method="post">
 <input type="hidden" name="userid" value="${mem}">
 	<table>
 		<tr>

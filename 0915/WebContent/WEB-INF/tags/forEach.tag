@@ -13,10 +13,10 @@
 	 ${m.msg} &gt;&gt; [좋아요 ${m.favcount} | 댓글 ${m.replycount} | ${m.wdate}] 
 	 <c:if test="${mem!=null}">
 	 	<c:if test="${stat==null}">
-	 		<a class="fav" href="control.jsp?action=updateM&mid=${m.mid}&mcnt=${mcnt}&userid=${m.userid}&cnt=${cnt}">♥</a>
+	 		<a class="fav" href="updateM.do?mid=${m.mid}&mcnt=${mcnt}&userid=${m.userid}&cnt=${cnt}">♥</a>
 	 	</c:if>
 	 	<c:if test="${stat!=null}">
-	 		<a class="fav" href="control.jsp?action=updateM&mid=${m.mid}&mcnt=${mcnt}&userid=${m.userid}&cnt=${cnt}&stat=all">♥</a>
+	 		<a class="fav" href="updateM.do?mid=${m.mid}&mcnt=${mcnt}&userid=${m.userid}&cnt=${cnt}&stat=all">♥</a>
 	 	</c:if>
 	 </c:if>
 	 <c:if test="${mem==null}">
@@ -27,7 +27,7 @@
 		<li>${r.userid} >> ${r.rmsg} [${r.wdate}]
 		<c:if test="${mem!=null && mem==r.userid}">
 		<c:if test="${stat==null}">
-	 		<form action="control.jsp?action=deleteR" method="post">
+	 		<form action="deleteR.do" method="post">
 		<input type="hidden" name="mcnt" value="${mcnt}">
 		<input type="hidden" name="rid" value="${r.rid}">
 		<input type="hidden" name="cnt" value="${cnt}">
@@ -36,11 +36,11 @@
 		</form>
 	 	</c:if>
 	 	<c:if test="${stat!=null}">
-	 		<form action="control.jsp?action=deleteR" method="post">
+	 		<form action="deleteR.do" method="post">
 		<input type="hidden" name="mcnt" value="${mcnt}">
 		<input type="hidden" name="rid" value="${r.rid}">
-		<input type="hidden" name="stat" value="${stat}">
 		<input type="hidden" name="cnt" value="${cnt}">
+		<input type="hidden" name="stat" value="${stat}">
 		<input type="submit" value="댓글삭제">
 		</form>
 	 	</c:if>
@@ -48,7 +48,7 @@
 	</c:forEach></ol>
 	<c:if test="${mem!=null}">
 		<c:if test="${stat==null}">
-	 	<form action="control.jsp?action=insertR" method="post">
+	 	<form action="insertR.do" method="post">
 	<input type="hidden" name="mid" value="${m.mid}">
 	<input type="hidden" name="userid" value="${mem}">
 	<input type="hidden" name="uid" value="${m.userid}">
@@ -59,7 +59,7 @@
 	</form>
 	 	</c:if>
 	 	<c:if test="${stat!=null}">
-	 	<form action="control.jsp?action=insertR" method="post">
+	 	<form action="insertR.do" method="post">
 	<input type="hidden" name="mid" value="${m.mid}">
 	<input type="hidden" name="userid" value="${mem}">
 	<input type="hidden" name="uid" value="${m.userid}">

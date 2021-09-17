@@ -12,4 +12,12 @@
     <error-code>404</error-code>
     <location>/error/error404.jsp</location>
   </error-page>
+  <servlet>
+    <servlet-name>fc</servlet-name>
+    <servlet-class>controller.common.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>fc</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
 </web-app>

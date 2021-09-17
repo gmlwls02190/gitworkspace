@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="control.jsp?action=insertU" method="post" name="form3">
+<form action="insertU.do" method="post" name="form3">
 	<table>
 		<tr>
 			<td>아이디</td><td><input type="text" name="userid" required></td>

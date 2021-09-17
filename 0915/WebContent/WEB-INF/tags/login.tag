@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:if test="${mem==null}">
-<form action="control.jsp?action=login" method="post">
+<form action="login.do" method="post">
 <input type="hidden" name="mcnt" value="${mcnt}">
 			<table>
 				<tr>
@@ -18,8 +18,7 @@
 		</form>
 </c:if>
 <c:if test="${mem!=null}">
-<form action="control.jsp" method="post" name="form1">
-<input type="hidden" name="action" value="logout">
+<form action="logout.do" method="post" name="form1">
 <input type="hidden" name="userid" value="${mem}">
 			<table>
 				<tr>

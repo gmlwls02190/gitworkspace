@@ -13,7 +13,7 @@
 <body>
 <div class="main">
 <ol>
-	<li><a href="control.jsp?action=mainAll&stat=all">전체목록보기</a></li>
+	<li><a href="mainAll.do?stat=all">전체목록보기</a></li>
 	<my:more/>
 </ol>
 <hr>
@@ -24,12 +24,12 @@
 <hr>
 <h3>회원목록</h3>
 <c:forEach var="v" items="${newUsers}">
-<a href="control.jsp?action=otherMain&mcnt=${mcnt}&userid=${v.userid}&cnt=${cnt}">[${v.uname}]</a>님 환영! <br>
+<a href="otherMain.do?mcnt=${mcnt}&userid=${v.userid}&cnt=${cnt}">[${v.uname}]</a>님 환영! <br>
 </c:forEach>
 cnt: ${cnt }<br>
 memcnt: ${memcnt }<br>
 idcnt: ${idcnt }<br>
-<a href="control2.jsp">test</a>
+<a href="control2.jsp">페이징 되냐?</a>
 </div>
 
 <div class="ad">

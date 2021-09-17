@@ -9,8 +9,7 @@
 </head>
 <body>
 
-<form action="control.jsp" method="post" name="form2">
-<input type="hidden" name="action" value="updateM">
+<form action="updateM.do" method="post" name="form2">
 <input type="hidden" name="mid" value="${data.mid}">
 <input type="hidden" name="userid" value="${data.userid}">
 <input type="hidden" name="favcount" value="${data.favcount}">
@@ -26,10 +25,13 @@
 			<td>날짜</td><td><input type="date"></td>
 		</tr>
 		<tr>
-			<td><input type="submit" value="수정"><input type="button" value="삭제" onClick="delM()"></td>
+			<td><input type="submit" value="수정"></td>
 		</tr>
 	</table>
 </form>
-
+<hr>
+${data.mid}
+<hr>
+<a href="javascript:delM(${data.mid})">삭제</a>
 </body>
 </html>

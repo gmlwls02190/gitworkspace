@@ -1,5 +1,6 @@
 select * from all_tables;
 drop table member;
+drop table message;
 drop table reply;
 create table users(
 	userid varchar(15) primary key,
@@ -39,6 +40,10 @@ insert into reply values(6,4,'ksh02190',sysdate,'´ñ±Û1');
 insert into reply values(7,4,'ksh02190',sysdate,'´ñ±Û2');
 insert into message values(5,'ksh02190','',2,1,sysdate);
 insert into reply values(8,5,'ksh02190',sysdate,'´ñ±Û1');
+
+insert into message values(6,'ksh02190','111',2,1,sysdate);
+insert into message values(7,'ksh02190','222',2,1,sysdate);
+insert into message values(8,'ksh02190','333',2,1,sysdate);
 
 select * from reply where rownum <= 2;
 select * from users where userid = 'timo' and userpw= '1234';

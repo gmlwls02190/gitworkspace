@@ -15,13 +15,13 @@
 <a href="write.jsp">게시글작성</a>
 <a href="addFav.do">관심글추가</a>
 <a href="main.do">메인</a>
-<%-- <h2>게시판페이지</h2>
+<h2>게시판페이지</h2>
 <hr>
 <a href="controller.jsp?action=main">메인으로</a>
 <hr>
-<a href="controller.jsp?action=pLists&category=Notice">공지사항</a><br>
-<a href="controller.jsp?action=pLists&category=Free">자유게시판</a><br>
-<a href="controller.jsp?action=pLists&category=Study">스터디게시판</a>
+<a href="pLists.do?category=Notice">공지사항</a><br>
+<a href="pLists.do?category=Free">자유게시판</a><br>
+<a href="pLists.do?category=Study">스터디게시판</a>
 <hr>
 <table>	
 	<tr>
@@ -32,7 +32,7 @@
 		<td>${r.count}</td><td>[${v.category}]&nbsp;${v.ptitle}&nbsp;</td><td>${v.mname}&nbsp;</td><td>${v.pdate}&nbsp;</td><td>${v.cnt}</td>
 	</tr>
 	</c:forEach>
-</table> --%>
+</table>
 
 </body>
 </html>

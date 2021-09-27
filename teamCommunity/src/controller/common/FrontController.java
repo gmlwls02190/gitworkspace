@@ -14,9 +14,6 @@ import controller.action.AddFavAction;
 import controller.action.CDeleteAction;
 import controller.action.CInsertAction;
 import controller.action.EditUserAction;
-import controller.action.GoFreeAction;
-import controller.action.GoNoticeAction;
-import controller.action.GoTipAction;
 import controller.action.JoinAction;
 import controller.action.LoginAction;
 import controller.action.LogoutAction;
@@ -26,6 +23,7 @@ import controller.action.MyPageAction;
 import controller.action.PContentAction;
 import controller.action.PDeleteAction;
 import controller.action.PInsertAction;
+import controller.action.PListsAction;
 import controller.action.PUpdateAction;
 import controller.action.QuitUserAction;
 import controller.action.SearchAction;
@@ -78,14 +76,8 @@ public class FrontController extends HttpServlet {
 		else if(action.equals("/logout.do")) {
 			forward=new LogoutAction().execute(request, response);
 		}
-		else if(action.equals("/goNotice.do")) {
-			forward=new GoNoticeAction().execute(request, response);
-		}
-		else if(action.equals("/goFree.do")) {
-			forward=new GoFreeAction().execute(request, response);
-		}
-		else if(action.equals("/goTip.do")) {
-			forward=new GoTipAction().execute(request, response);
+		else if(action.equals("/pLists.do")) {
+			forward=new PListsAction().execute(request, response);
 		}
 		else if(action.equals("/pContent.do")) {
 			forward=new PContentAction().execute(request, response);

@@ -6,25 +6,26 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.common.DBCP;
+import model.member.MemVO;
 
 public class StudyBoDAO {
 	// C R U D
 
 			// R - Select All ( 게시글 목록 보기 )
-			public ArrayList<StudyBoVO> getStudyPostList(String mid) {
+			public ArrayList<StudyBoVO> getStudyPostList(MemVO vo) {
 				Connection conn = DBCP.connect();
 				PreparedStatement pstmt = null;
 				ArrayList<StudyBoVO> spList= new ArrayList<>();
 				String sql;
 				try {
-					if(mid==null || mid=="" || mid.equals("admin")) {
+					if(vo.getMid()==null || vo.getMid()=="" || vo.getMid().equals("admin")) {
 						sql ="SELECT * FROM STUDYBOARD ORDER BY PNUM DESC";
 						pstmt = conn.prepareStatement(sql);
 					}
 					else {
 						sql ="SELECT * FROM STUDYBOARD WHERE MID=? ORDER BY PNUM DESC";
 						pstmt = conn.prepareStatement(sql);
-						pstmt.setString(1, mid);
+						pstmt.setString(1, vo.getMid());
 					}
 					ResultSet rs = pstmt.executeQuery();
 					while(rs.next()) {

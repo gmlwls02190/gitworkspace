@@ -22,7 +22,7 @@
 <a href="myFav.do">관심글</a>
 <a href="main.do">메인</a>
 
-<%-- <h2>마이페이지</h2>
+ <h2>마이페이지</h2>
 <hr>
 <a href="controller.jsp?action=myPage&category=myBoard">내글보기</a>
 <a href="controller.jsp?action=myPage&category=checkUser&mid=${mem}">회원정보수정</a>
@@ -125,6 +125,6 @@
 		</table>
 		<%
 	}
-%> --%>
+%> 
 </body>
 </html>

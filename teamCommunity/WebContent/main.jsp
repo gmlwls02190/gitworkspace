@@ -16,16 +16,16 @@
 <h2>메인</h2>
 <hr>
 <a href="login.jsp">로그인</a>
-<a href="logout.do">로그아웃</a>
-<a href="goNotice.do">공지게시판</a>
-<a href="goFree.do">자유게시판</a>
-<a href="goTip.do">팁게시판</a>
+<a href="logout.do">로그아웃</a><br>
+		<a href="pLists.do?category=Notice">공지사항</a><br>
+		<a href="pLists.do?category=Free">자유게시판</a><br>
+		<a href="pLists.do?category=Study">스터디게시판</a><br>
 <a href="myPage.do">마이</a>
 <a href="info.jsp">사이트소개</a>
 <a href="contact.jsp">오시는길</a>
 
 
-<%-- <h2>메인페이지</h2>
+<h2>메인페이지</h2>
 <hr>
 <%
 	if(session.getAttribute("mem")==null){
@@ -53,12 +53,12 @@
 		<a href="controller.jsp?action=myPage&category=myBoard&mid=${mem}">마이페이지</a>
 		<a href="controller.jsp?action=logout">로그아웃</a>
 		<hr>
-		<a href="controller.jsp?action=pLists&category=Notice">공지사항</a><br>
-		<a href="controller.jsp?action=pLists&category=Free">자유게시판</a><br>
-		<a href="controller.jsp?action=pLists&category=Study">스터디게시판</a>
+		<a href="pLists.do?category=Notice">공지사항</a><br>
+		<a href="pLists.do?category=Free">자유게시판</a><br>
+		<a href="pLists.do?category=Study">스터디게시판</a>
 		<%
 	}
-%> --%>
+%>
 
 </body>
 </html>

@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
 import model.common.DBCP;
+import model.member.MemVO;
 
 
 public class FreeBoDAO {
@@ -13,21 +15,21 @@ public class FreeBoDAO {
 	// C R U D
 
 	// R - Select All ( 게시글 목록 보기 )
-	public ArrayList<FreeBoVO> getFreePostList(String mid) {
+	public ArrayList<FreeBoVO> getFreePostList(MemVO vo) {
 		Connection conn = DBCP.connect();
 		PreparedStatement pstmt = null;
 		ArrayList<FreeBoVO> fpList= new ArrayList<>();
 		String sql;
 		try {
 			System.out.println("getFreePostList() 수행");
-			if(mid==null || mid=="" || mid.equals("admin")) {
+			if(vo.getMid()==null || vo.getMid()=="" || vo.getMid().equals("admin")) {
 				sql ="SELECT * FROM FREEBOARD ORDER BY PNUM DESC";
 				pstmt = conn.prepareStatement(sql);
 			}
 			else {
 				sql ="SELECT * FROM FREEBOARD WHERE MID=? ORDER BY PNUM DESC";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, mid);
+				pstmt.setString(1, vo.getMid());
 			}
 			
 			ResultSet rs = pstmt.executeQuery();
@@ -97,7 +99,7 @@ public class FreeBoDAO {
 		PreparedStatement pstmt = null;
 		boolean res=false;
 		try {
-			String sql ="INSERT INTO FREEBOARD (PNUM,PTITLE,PCONTENT,MNAME,MID) VALUES ((SELECT NVL(MAX(PNUM),0)+1 FROM FREEBOARD),?,?,?,?)";
+			String sql ="INSERT INTO ? (PNUM,PTITLE,PCONTENT,MNAME,MID) VALUES ((SELECT NVL(MAX(PNUM),0)+1 FROM FREEBOARD),?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,vo.getPtitle());
 			pstmt.setString(2,vo.getPcontent());

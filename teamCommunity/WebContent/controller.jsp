@@ -100,15 +100,15 @@
 	else if(action.equals("myPage")){
 		if(category.equals("myBoard")){
 			if(stat.equals("Free")){
-				ArrayList<FreeBoVO> datas=fbDAO.getFreePostList(memid);
+				ArrayList<FreeBoVO> datas=fbDAO.getFreePostList(mVO);
 				request.setAttribute("datas", datas);
 			}
 			else if(stat.equals("Study")){
-				ArrayList<StudyBoVO> datas=sbDAO.getStudyPostList(memid);
+				ArrayList<StudyBoVO> datas=sbDAO.getStudyPostList(mVO);
 				request.setAttribute("datas", datas);
 			}
 			else{
-				out.println("<script>alert('마이페이지확인');history.go(-1);</script>");
+				out.println("<script>alert('마이페이지게시글확인');history.go(-1);</script>");
 			}
 			pageContext.forward(myurl);
 		}
@@ -127,6 +127,9 @@
 		else if(category.equals("favBoard")){
 			
 			pageContext.forward(myurl);
+		}
+		else {
+			out.println("<script>alert('마이페이지확인');history.go(-1);</script>");
 		}
 	}
 	else if(action.equals("editUser")){

@@ -2,6 +2,9 @@ package test;
 
 public class IPhone implements Phone{
 
+	public IPhone() {
+		System.out.println("아이폰 기본생성자!");
+	}
 	public void volumeUp() {
 		System.out.println("소리++");
 	}

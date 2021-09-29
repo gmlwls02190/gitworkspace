@@ -12,8 +12,8 @@ public class Client {
 		
 		// 2. 객체를 요청하면, 해당 객체를 준다.
 		// == Look up
-		Test t=(Test)factory.getBean("test");
-		t.print();
+//		Test t=(Test)factory.getBean("test");
+//		t.print();
 		
 		Phone p=(Phone)factory.getBean("phone");
 		p.powerOn();

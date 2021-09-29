@@ -3,8 +3,24 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean class="test.Test" id="test"/>
-	<!-- == Test test=new Test(); -->
-	<bean class="test.IPhone" id="phone"/>
-
+	<!-- <bean class="test.Test" id="test" init-method="initFunc" destroy-method=""/> -->
+	<!-- == Test test=new Test(); 		초기화관련메서드			해제관련메서드-->
+	<!-- lazy-init="true" 내가필요로할때만 동작 -->
+	<!-- scope="singleton" 디폴트값-->
+	<!-- scope="prototype" 디폴트값-->
+	<!-- <bean class="test.GaPhone" id="phone">
+		<constructor-arg ref="aw"></constructor-arg>
+	</bean>
+	
+	<bean class="test.SmartWatch" id="sw"/>
+	<bean class="test.AppleWatch" id="aw"/> -->
+	
+	<bean class="test2.Teemo" id="champ">
+		<constructor-arg ref="staff"></constructor-arg>
+	</bean>
+	
+	<bean class="test2.Sword" id="sword"/>
+	<bean class="test2.Staff" id="staff"/>
+	<bean class="test2.Shield" id="shield"/>
+	
 </beans>

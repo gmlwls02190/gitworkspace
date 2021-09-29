@@ -1,6 +1,16 @@
 package test;
 
 public class GaPhone implements Phone{
+	
+	private Watch watch;
+	
+	public GaPhone() {
+		System.out.println("岸钒矫 扁夯积己磊!");
+	}
+	public GaPhone(Watch watch) {
+		this.watch=watch;
+		System.out.println("岸钒矫 积己磊!");
+	}
 	@Override
 	public void powerOn() {
 		System.out.println("傈盔 难咙");
@@ -11,11 +21,13 @@ public class GaPhone implements Phone{
 	}
 	@Override
 	public void volumeUp() {
-		System.out.println("家府+=10");
+		watch.volumeUp();
+		// System.out.println("家府+=10");
 	}
 	@Override
 	public void volumeDown() {
-		System.out.println("家府-=10");
+		watch.volumeDown();
+		// System.out.println("家府-=10");
 	}
 	
 }

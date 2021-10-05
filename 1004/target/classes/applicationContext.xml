@@ -6,5 +6,9 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:component-scan base-package="model"></context:component-scan>
+	<!-- <bean class="model.member.TestMemDAO" id="memDAO"/>
+	<bean class="model.member.TestMemServiceImpl" id="memServiceImpl">
+		<property name="mDAO" ref="memDAO"></property>
+	</bean> -->
 
 </beans>

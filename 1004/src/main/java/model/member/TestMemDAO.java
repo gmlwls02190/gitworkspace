@@ -95,6 +95,8 @@ public class TestMemDAO {
 	}
 	
 	public TestMemVO selectOne(TestMemVO vo) {
+		// 로그인에 성공한다면, TestMemVO 객체가 리턴(반환)
+		// 실패한다면, 리턴이 null
 		System.out.println("DAO selectOne");
 		TestMemVO data=null;
 		

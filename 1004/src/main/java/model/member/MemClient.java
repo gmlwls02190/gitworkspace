@@ -15,13 +15,21 @@ public class MemClient {
 		vo.setId("qwe");
 		/*vo.setPassword("qwe");
 		vo.setName("teemo");
-		tms.insertTMember(vo);*/
+		tms.insertTMember(vo);
 		
-		tms.deleteTMember(vo);
+		tms.deleteTMember(vo);*/
+		
+		TestMemVO data=tms.selectOne(vo);
+		if(data==null) {
+			System.out.println("login failed");
+		}
+		else{
+			System.out.println("login success");
+		}
 		
 		List<TestMemVO> datas=tms.selectAll();
-		for(TestMemVO data:datas) {
-			System.out.println(data);
+		for(TestMemVO v:datas) {
+			System.out.println(v);
 		}
 		
 		factory.close();

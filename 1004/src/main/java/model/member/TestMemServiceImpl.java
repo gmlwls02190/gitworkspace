@@ -11,6 +11,15 @@ public class TestMemServiceImpl implements TestMemService{
 	@Autowired
 	private TestMemDAO tmDAO;
 	
+	
+	public TestMemDAO getTmDAO() {
+		return tmDAO;
+	}
+
+	public void setTmDAO(TestMemDAO tmDAO) {
+		this.tmDAO = tmDAO;
+	}
+
 	@Override
 	public void insertTMember(TestMemVO vo) {
 		tmDAO.insertTMember(vo);

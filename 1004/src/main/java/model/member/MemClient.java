@@ -12,12 +12,11 @@ public class MemClient {
 		TestMemService tms=(TestMemService)factory.getBean("testMemService");
 		
 		TestMemVO vo=new TestMemVO();
-		vo.setId("qwe");
-		/*vo.setPassword("qwe");
-		vo.setName("teemo");
-		tms.insertTMember(vo);
+		vo.setId("admin");
+		vo.setPassword("1234");
+		/*tms.insertTMember(vo);*/
 		
-		tms.deleteTMember(vo);*/
+		/*tms.deleteTMember(vo);*/
 		
 		TestMemVO data=tms.selectOne(vo);
 		if(data==null) {

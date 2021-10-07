@@ -1,4 +1,5 @@
 select * from all_tables;
+drop table testboard;
 
 create table testboard(
 	id int primary key,

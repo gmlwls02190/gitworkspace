@@ -13,7 +13,7 @@ public class BoardClient {
 		TestBoardService tbs=(TestBoardService)factory.getBean("testBoardService");
 		
 		TestBoardVO vo=new TestBoardVO();
-		vo.setContent("내용 작성중~");
+		vo.setContent("jdbcTemplate 클래스를 이용한 실습완료");
 		vo.setTitle("제목입니다");
 		vo.setWriter("관리자");
 		tbs.insertTBoard(vo);

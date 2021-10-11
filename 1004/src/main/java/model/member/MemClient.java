@@ -12,21 +12,26 @@ public class MemClient {
 		TestMemService tms=(TestMemService)factory.getBean("testMemService");
 		
 		TestMemVO vo=new TestMemVO();
-		vo.setId("admin");
-		vo.setPassword("1234");
-		/*tms.insertTMember(vo);*/
-		
-		/*tms.deleteTMember(vo);*/
-		
-		TestMemVO data=tms.selectOne(vo);
-		if(data==null) {
-			System.out.println("login failed");
-		}
-		else{
-			System.out.println("login success");
-		}
+		vo.setId("hello");
+		vo.setPassword("4321");
+		tms.insertTMember(vo);
 		
 		List<TestMemVO> datas=tms.selectAll();
+		for(TestMemVO v:datas) {
+			System.out.println(v);
+		}
+		
+		tms.deleteTMember(vo);
+		
+//		TestMemVO data=tms.selectOne(vo);
+//		if(data==null) {
+//			System.out.println("login failed");
+//		}
+//		else{
+//			System.out.println("login success");
+//		}
+		
+		datas=tms.selectAll();
 		for(TestMemVO v:datas) {
 			System.out.println(v);
 		}

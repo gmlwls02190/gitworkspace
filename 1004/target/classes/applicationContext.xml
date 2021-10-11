@@ -8,13 +8,29 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
 	<context:component-scan base-package="model"></context:component-scan>
+	<context:component-scan base-package="com.kim.app.common"></context:component-scan>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="kim"/>
+		<property name="password" value="1234"/>
+	</bean>
 
+<!-- 
 	<bean class="com.kim.app.common.LogAdvice" id="log"/>
 	<bean class="com.kim.app.common.AfterAdvice" id="aAdvice"/>
 	<bean class="com.kim.app.common.AfterReturningAdvice" id="arAdvice"/>
 	<bean class="com.kim.app.common.AfterThrowingAdvice" id="atAdvice"/>
 	<bean class="com.kim.app.common.AroundAdvice" id="aroundAdvice"/>
+	 -->
 	
+	
+<!-- 	
 	<aop:config>
 		<aop:pointcut expression="execution(* model.board.*Impl.select*(..))" id="aPointcut"/>
 		<aop:pointcut expression="execution(* model.board.*Impl.*(..))" id="bPointcut"/>
@@ -27,7 +43,7 @@
 			<aop:after method="printLog" pointcut-ref="bPointcut"/>
 		</aop:aspect>
 		
-<!-- 	
+
 		<aop:aspect ref="log">
 			<aop:before method="printLog" pointcut-ref="aPointcut"/>
 		</aop:aspect>
@@ -55,7 +71,7 @@
 		<aop:aspect ref="aroundAdvice">
 			<aop:around method="printLog" pointcut-ref="bPointcut"/>
 		</aop:aspect>
-		 -->
+		
 	</aop:config>
-
+ -->
 </beans>

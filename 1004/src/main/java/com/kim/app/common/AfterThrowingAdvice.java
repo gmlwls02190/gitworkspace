@@ -1,8 +1,10 @@
 package com.kim.app.common;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 
 public class AfterThrowingAdvice {
+	@AfterThrowing(pointcut="?Pointcut",throwing="excep")
 	public void printLog(JoinPoint jp,Exception excep) {
 		String name=jp.getSignature().getName();
 		System.out.println("메서드명: "+name);

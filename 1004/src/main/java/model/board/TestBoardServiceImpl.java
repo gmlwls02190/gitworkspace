@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 public class TestBoardServiceImpl implements TestBoardService{
 
 	@Autowired
-	private TestBoardDAO tbDAO;
+	private SpringBoardDAO tbDAO;
 	
 	@Override
 	public void insertTBoard(TestBoardVO vo) {
-		if(vo.getId()==0) { // 일부러 예외발생시키기 위해서 작성
-			throw new IllegalArgumentException("id PK : 0 불가능!");
-			// 런타임 예외(실생시에 발생, 체크되는 예외)
-		}
+//		if(vo.getId()==0) { // 일부러 예외발생시키기 위해서 작성
+//			throw new IllegalArgumentException("id PK : 0 불가능!");
+//			// 런타임 예외(실생시에 발생, 체크되는 예외)
+//		}
 		tbDAO.insertTBoard(vo);
 	}
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<context:component-scan base-package="controller.action"></context:component-scan>
+	
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/login.do">login</prop>
+				<prop key="/logout.do">logout</prop>
+				<prop key="/main.do">main</prop>
+				<prop key="/board.do">board</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="login" class="controller.action.LoginController"/>
+	<bean id="logout" class="controller.action.LogoutController"/>
+	<bean id="main" class="controller.action.MainController"/>
+	<bean id="board" class="controller.action.GetBoardController"/>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/board/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean> -->
+	
+</beans>

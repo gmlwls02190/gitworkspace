@@ -5,6 +5,7 @@ import java.util.Date;
 public class GalleryVO {
 	
 	private int bid;
+	private String id;
 	private String title;
 	private String artist;
 	private String info;
@@ -16,6 +17,12 @@ public class GalleryVO {
 	}
 	public void setBid(int bid) {
 		this.bid = bid;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;

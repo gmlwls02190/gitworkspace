@@ -20,10 +20,11 @@ public class MemberDAO {
 	private final String deleteSQL ="delete from member where id=?";
 	private final String getOneSQL ="select * from member where id=?";
 	
-	public void insertMember(MemberVO vo) {
+	public boolean insertMember(MemberVO vo) {
 		System.out.println("insertMember!!!");
 		conn=JDBC.getConnection();
 		pstmt=null;
+		boolean flag=false;
 		try {
 			pstmt=conn.prepareStatement(insertSQL);
 			pstmt.setString(1, vo.getId());
@@ -33,18 +34,21 @@ public class MemberDAO {
 			pstmt.setString(5, vo.getAddress());
 			pstmt.setInt(6, vo.getCallNum());
 			pstmt.executeUpdate();
+			flag=true;
 		}catch(Exception e) {
 			System.out.println("insertMember error");
 			e.printStackTrace();
 		}finally {
 			JDBC.close(conn, pstmt);
 		}
+		return flag;
 	}
 	
-	public void updateMember(MemberVO vo) {	
+	public boolean updateMember(MemberVO vo) {	
 		System.out.println("updateMember!!!");
 		conn=JDBC.getConnection();
 		pstmt=null;
+		boolean flag=false;
 		try {
 			pstmt=conn.prepareStatement(updateSQL);
 			pstmt.setString(1, vo.getPw());
@@ -54,28 +58,33 @@ public class MemberDAO {
 			pstmt.setInt(5, vo.getCallNum());
 			pstmt.setString(6, vo.getId());
 			pstmt.executeUpdate();
+			flag=true;
 		}catch(Exception e) {
 			System.out.println("updateMember error");
 			e.printStackTrace();
 		}finally {
 			JDBC.close(conn, pstmt);
 		}
+		return flag;
 	}
 
-	public void deleteMember(MemberVO vo) {	
+	public boolean deleteMember(MemberVO vo) {	
 		System.out.println("deleteMember!!!");
 		conn=JDBC.getConnection();
 		pstmt=null;
+		boolean flag=false;
 		try {
 			pstmt=conn.prepareStatement(deleteSQL);
 			pstmt.setString(1, vo.getId());
 			pstmt.executeUpdate();
+			flag=true;
 		}catch(Exception e) {
 			System.out.println("deleteMember error");
 			e.printStackTrace();
 		}finally {
 			JDBC.close(conn, pstmt);
 		}
+		return flag;
 	}
 	
 	public MemberVO getOneMember(MemberVO vo) {

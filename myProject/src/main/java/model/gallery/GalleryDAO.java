@@ -17,26 +17,31 @@ public class GalleryDAO {
 	private ResultSet rs;
 
 	private final String getAllSQL="select * from gallery order by bid desc";
-	private final String searchSQL="select * from gallery where ? like ? order by bid desc";
+	private final String myAllSQL="select * from gallery where id=? order by bid desc";
+	private final String artistAllSQL="select * from gallery where artist=? order by bid desc";
 	private final String getOneSQL="select * from gallery where bid=?";
-	private final String insertSQL="insert into gallery values((select nvl(max(id),0)+1 from gallery),?,?,?,?,sysdate)";
+	private final String insertSQL="insert into gallery values((select nvl(max(bid),0)+1 from gallery),?,?,?,?,?,sysdate)";
 	private final String updateSQL="update gallery set title=?,info=?,gallery=?,wdate=sysdate where bid=?";
 	private final String deleteSQL="delete gallery where bid=?";
 
-	public ArrayList<GalleryVO> getGalleryList(GalleryVO vo,String condition,String content) {
+	public ArrayList<GalleryVO> getGalleryList(GalleryVO vo) {
 		conn=JDBC.getConnection();
 		pstmt=null;
 		ArrayList<GalleryVO> datas=new ArrayList<GalleryVO>();
 		try {
-			if(content==null || content=="") {
-				System.out.println("All!!");
-				pstmt=conn.prepareStatement(getAllSQL);
+			if(vo.getId()!=null || vo.getId()!="") {
+				System.out.println("myAll!!");
+				pstmt=conn.prepareStatement(myAllSQL);
+				pstmt.setString(1, vo.getId());
+			}
+			else if(vo.getArtist()!=null || vo.getArtist()!="") {
+				System.out.println("artistAll!!");
+				pstmt=conn.prepareStatement(artistAllSQL);
+				pstmt.setString(1, vo.getArtist());
 			}
 			else {
-				System.out.println("Search!!");
-				pstmt=conn.prepareStatement(searchSQL);
-				pstmt.setString(1, condition);
-				pstmt.setString(2, "%"+content+"%");
+				System.out.println("All!!");
+				pstmt=conn.prepareStatement(getAllSQL);
 			}
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -44,6 +49,7 @@ public class GalleryDAO {
 				data.setArtist(rs.getString("artist"));
 				data.setBid(rs.getInt("bid"));
 				data.setGallery(rs.getString("gallery"));
+				data.setId(rs.getString("id"));
 				data.setInfo(rs.getString("info"));
 				data.setTitle(rs.getString("title"));
 				data.setWdate(rs.getDate("wdate"));
@@ -73,6 +79,7 @@ public class GalleryDAO {
 				data.setArtist(rs.getString("artist"));
 				data.setBid(rs.getInt("bid"));
 				data.setGallery(rs.getString("gallery"));
+				data.setId(rs.getString("id"));
 				data.setInfo(rs.getString("info"));
 				data.setTitle(rs.getString("title"));
 				data.setWdate(rs.getDate("wdate"));
@@ -94,10 +101,11 @@ public class GalleryDAO {
 		boolean flag=false;
 		try {
 			pstmt=conn.prepareStatement(insertSQL);
-			pstmt.setString(1, vo.getTitle());
-			pstmt.setString(2, vo.getArtist());
-			pstmt.setString(3, vo.getInfo());
-			pstmt.setString(4, vo.getGallery());
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setString(3, vo.getArtist());
+			pstmt.setString(4, vo.getInfo());
+			pstmt.setString(5, vo.getGallery());
 			pstmt.executeUpdate();
 			flag=true;
 		}catch(Exception e) {

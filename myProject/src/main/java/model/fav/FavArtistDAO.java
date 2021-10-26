@@ -16,8 +16,8 @@ public class FavArtistDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private final String insertFavSQL="insert into favArtist values((select nvl(max(favId),0)+1 from favArtist),?,?,?,sysdate)";
-	private final String getFavListSQL="select * from favArtist order by favId desc";
+	private final String insertFavSQL="insert into favArtist values((select nvl(max(favId),0)+1 from favArtist),?,?,?,?,sysdate)";
+	private final String getFavListSQL="select * from favArtist where id=? order by favId desc";
 	private final String deleteFavSQL="delete favArtist where favId=?";
 	
 	public boolean insertFav(FavArtistVO vo) {
@@ -28,8 +28,9 @@ public class FavArtistDAO {
 		try {
 			pstmt=conn.prepareStatement(insertFavSQL);
 			pstmt.setInt(1, vo.getBid());
-			pstmt.setString(2, vo.getTitle());
-			pstmt.setString(3, vo.getArtist());
+			pstmt.setString(2, vo.getId());
+			pstmt.setString(3, vo.getTitle());
+			pstmt.setString(4, vo.getArtist());
 			pstmt.executeUpdate();
 		}catch(Exception e) {
 			System.out.println("insertFav Error");
@@ -47,12 +48,14 @@ public class FavArtistDAO {
 		ArrayList<FavArtistVO> datas=new ArrayList<FavArtistVO>();
 		try {
 			pstmt=conn.prepareStatement(getFavListSQL);
+			pstmt.setString(1, vo.getId());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				FavArtistVO data=new FavArtistVO();
 				data.setArtist(rs.getString("artist"));
 				data.setBid(rs.getInt("bid"));
 				data.setFavId(rs.getInt("favId"));
+				data.setId(rs.getString("id"));
 				data.setTitle(rs.getString("title"));
 				data.setWdate(rs.getDate("wdate"));
 				datas.add(data);

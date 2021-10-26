@@ -6,6 +6,7 @@ public class FavArtistVO {
 
 	private int favId;
 	private int bid;
+	private String id;
 	private String title;
 	private String artist;
 	private Date wdate;
@@ -21,6 +22,12 @@ public class FavArtistVO {
 	}
 	public void setBid(int bid) {
 		this.bid = bid;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;

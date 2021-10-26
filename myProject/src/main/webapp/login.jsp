@@ -10,10 +10,16 @@
 -->
 <html>
 <head>
-<title>Phantom by HTML5 UP</title> 
+<title>Phantom by HTML5 UP</title>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript">
-	function reg(){
-		document.location.href="login.jsp?mode=signUp";
+	Kakao.init('cc78e1e3d846c9f6c4dafc8b6247aed0');
+	
+	console.log(Kakao.isInitialized());
+</script>
+<script type="text/javascript">
+	function reg() {
+		document.location.href = "login.jsp?mode=signUp";
 	}
 </script>
 <meta charset="utf-8" />
@@ -29,16 +35,7 @@
 	<div id="wrapper">
 
 		<!-- Header -->
-		<header id="header">
-			<div class="inner">
-
-				<!-- Logo -->
-				<a href="main.do" class="logo"> <span class="symbol"><img
-						src="images/logo.svg" alt="test" /></span><span class="title">HJ
-						Gallery</span>
-				</a>
-			</div>
-		</header>
+		<mytag:logoNnav />
 
 		<!-- Menu -->
 		<mytag:menuBar />
@@ -46,77 +43,97 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-			<c:if test="${param.mode=='login'}">
-			<header>
-					<h1>Login</h1>
-				</header>
-				<section class="tiles">
-				<article class="style4">
-						
+				<c:if test="${param.mode=='login'}">
+					<header>
+						<h1>Login</h1>
+					</header>
+					<section class="tiles">
+						<article class="style4">
+						<span class="image"> <img src="images/pic04.jpg" alt="" />
+						</span> <a href="#">
+							<h2>뭔가 넣을 곳</h2>
+						</a>
 					</article>
-					<article class="style4">
-						<form method="post" action="login.do">
-						<div class="row gtr-uniform">
-							<div class="col-12">
-								<input type="text" name="id" id="" value="" placeholder="ID" />
-							</div>
-							<div class="col-12">
-								<input type="password" name="pw" id="" value="" placeholder="PW" />
-							</div>
-							<div class="col-12">
-								<ul class="actions">
-									<li><input type="submit" value="Login" class="primary" /></li>
-									<li><input type="button" value="SignUp" onClick="reg()" /></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-					</article>
-					<article class="style4">
-					</article>
-				</section>
+						<article class="style4">
+							<form method="post" action="login.do">
+								<div class="row gtr-uniform">
+									<div class="col-12">
+										<input type="text" name="id" id="id" value="" placeholder="ID" />
+									</div>
+									<div class="col-12">
+										<input type="password" name="pw" id="pw" value=""
+											placeholder="PW" />
+									</div>
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="Login" class="primary" /></li>
+											<li><input type="button" value="SignUp" onClick="reg()" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+						</article>
+						<article class="style4">
+							<ul class="actions">
+								<li><a href="javascript:loginWithKakao()"><img alt="" src="images/kakaoLogin.png"></a></li>
+							</ul>
+						</article>	
+					</section>
 				</c:if>
-				
+
 				<c:if test="${param.mode=='signUp'}">
-				<header>
-					<h1>SignUp</h1>
-				</header>
-				<section class="tiles">
-					<article class="style4"></article>
-					<article class="style4">
-						<form method="post" action="signUp.do">
-							<div class="row gtr-uniform">
-								<div class="col-12">
-									<input type="text" name="id" id="" value="" placeholder="ID" />
+					<header>
+						<h1>SignUp</h1>
+					</header>
+					<section class="tiles">
+						<article class="style4"></article>
+						<article class="style4">
+							<form method="post" action="signUp.do">
+								<div class="row gtr-uniform">
+									<div class="col-12">
+										<input type="text" name="id" id="" value="" placeholder="ID" />
+									</div>
+									<div class="col-12">
+										<input type="password" name="pw" id="" value=""
+											placeholder="PW" />
+									</div>
+									<div class="col-12">
+										<input type="password" name="pw" id="" value=""
+											placeholder="PW" />
+									</div>
+									<div class="col-12">
+										<input type="text" name="artist" id="" value=""
+											placeholder="Artist" />
+									</div>
+									<div class="col-12">
+										<input type="email" name="email" id="" value=""
+											placeholder="Email" />
+									</div>
+									<div class="col-12">
+										<input type="text" name="firstAddress" id="" value=""
+											placeholder="Address" />
+											<input type="hidden" name="middleAddress" value="@">
+										<select name="lastAddress">
+											<option selected>@gmail.com</option>
+											<option>@naver.com</option>
+											<option>@daum.net</option>
+											<option>@hotmail.com</option>
+										</select>
+									</div>
+									<div class="col-12">
+										<input type="text" name="callNum" id="" value=""
+											placeholder="CallNumber" />
+									</div>
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" value="SignUp" class="primary" /></li>
+										</ul>
+									</div>
 								</div>
-								<div class="col-12">
-									<input type="password" name="pw" id="" value="" placeholder="PW" />
-								</div>
-								<div class="col-12">
-									<input type="password" name="pw" id="" value="" placeholder="PW" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="artist" id="" value="" placeholder="Artist" />
-								</div>
-								<div class="col-12">
-									<input type="email" name="email" id="" value="" placeholder="Email" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="address" id="" value="" placeholder="Address" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="callNum" id="" value="" placeholder="CallNumber" />
-								</div>
-								<div class="col-12">
-									<ul class="actions">
-										<li><input type="submit" value="SignUp" class="primary" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</article>
-					<article class="style4"></article>
-				</section>
+							</form>
+						</article>
+						<article class="style4"></article>
+					</section>
 				</c:if>
 			</div>
 		</div>

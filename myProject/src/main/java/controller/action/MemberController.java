@@ -3,20 +3,24 @@ package controller.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import model.member.MemberDAO;
+import model.member.MemberService;
 import model.member.MemberVO;
 
 @Controller
 public class MemberController {
 	
+	@Autowired
+	private MemberService memberService;
+	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST)
-	public String login(HttpServletRequest request,MemberVO vo,MemberDAO dao) {
-		MemberVO mem=dao.getOneMember(vo);
+	public String login(HttpServletRequest request,MemberVO vo) {
+		MemberVO mem=memberService.getOneMember(vo);
 		
 		if(mem==null) {
 			// id error
@@ -49,5 +53,35 @@ public class MemberController {
 		session.invalidate();
 		
 		return "redirect:main.do";
+	}
+	
+	@RequestMapping("/signUp.do")
+	public String signUp(MemberVO vo) {
+		if(memberService.insertMember(vo)) {
+			return "login.jsp";
+		}
+		else {
+			return "redirect:main.do";
+		}
+	}
+	
+	@RequestMapping("/updateMember.do")
+	public String updateMember(MemberVO vo) {
+		if(memberService.updateMember(vo)) {
+			return "logout.do";
+		}
+		else {
+			return "redirect:main.do";
+		}
+	}
+	
+	@RequestMapping("/deleteMember.do")
+	public String deleteMember(MemberVO vo) {
+		if(memberService.deleteMember(vo)) {
+			return "logout.do";
+		}
+		else {
+			return "redirect:main.do";
+		}
 	}
 }

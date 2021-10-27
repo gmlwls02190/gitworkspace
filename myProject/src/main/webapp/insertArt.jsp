@@ -36,19 +36,19 @@
 					<h1>Registration of Gallery</h1>
 				</header>
 				<form action="addGallery.do" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="id" value="회원아이디">
+					<input type="hidden" name="id" value="${mem.id}">
 					<div class="row gtr-uniform">
 						<div class="col-12">
 							<input type="text" name="title" value="작품명">
 						</div>
 						<div class="col-12">
-							<input type="text" name="artist" value="작가명">
+							<input type="text" name="artist" value="${mem.artist }">
 						</div>
 						<div class="col-12">
-							<input type="file" name="gallery">
+							<input type="file" name="fileUpload">
 						</div>
 						<div class="col-12">
-							<textarea rows="1" cols="200" placeholder="작품설명"></textarea>
+							<textarea rows="1" cols="200" placeholder="작품설명" name="info"></textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">

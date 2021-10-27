@@ -3329,11 +3329,11 @@ input, select, textarea {
 		}
 		
 /* 아코디언테스트 */
-.accordian span{
+#accMenu{
 	position: relative;
-	cursor: poionter;
+	cursor: pointer;
 	display: block;
-	padding: 1 em 0;
+	padding: 1em 0;
 	line-height: 1.5;
 	border: 0;
 	color: inherit;

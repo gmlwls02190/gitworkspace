@@ -1,30 +1,30 @@
-Phantom by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+===================================================================================
+===============================프로젝트진행사항========================================
+===================================================================================
 
+10.26
+===================================================================================
+전체적인 .jsp페이지 뷰 부분 기본구조 작성 및 수정
+각모델부분 Service / ServiceImpl 생성
+DB테이블 일부 수정
 
-This is Phantom, a simple design built around a grid of large, colorful, semi-interactive
-image tiles (of which you can have as many or as few as you like). Makes use of some
-SVG and animation techniques I've been experimenting with on that other project of mine
-you may have heard about (https://carrd.co), and includes a handy generic page for whatever.
+카카오 로그인 API 적용 준비
+===================================================================================
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+10.27
+===================================================================================
+일부 css 조정
+카카오 로그인 API 적용(DB 저장 미구현)
+메뉴바태그 수정
+파일입출력 구현 및 DB 저장 완료
+파일입출력을 위해 galleryVO 수정
+톰캣에서 외부경로 읽을 수 있게 server.xml에 Context추가
+controller.action 일부 수정
 
-(* = not included)
-
-AJ
-aj@lkn.io | @ajlkn
-
-
-Credits:
-
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+페이지네이션 적용 준비
+===================================================================================
+===================================================================================
+===================================================================================
+===================================================================================
+===================================================================================
+===================================================================================

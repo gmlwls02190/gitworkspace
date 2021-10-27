@@ -1,5 +1,7 @@
 package controller.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import model.gallery.GalleryService;
 import model.gallery.GalleryVO;
@@ -55,10 +58,17 @@ public class GalleryController {
 	}
 	
 	@RequestMapping("/addGallery.do")
-	public String addGallery(GalleryVO vo,Model model) {
-		if(galleryService.insertGallery(vo)) {
-			return "galleryList.do";
-		}
+	public String addGallery(GalleryVO vo) throws IllegalStateException, IOException {
+		System.out.println("vo: "+vo);
+		MultipartFile gallery=vo.getFileUpload();
+		if(!gallery.isEmpty()) {
+			String fileName=gallery.getOriginalFilename();
+			System.out.println("fileName: "+fileName);
+			gallery.transferTo(new File("D:\\JAVA\\HEEJIN_0622\\resource\\images\\"+fileName));
+			//-------------------------------------------------------------------------------------
+			vo.setGallery("\\images\\"+fileName);
+		}// /images/filename.jpg
+		galleryService.insertGallery(vo);
 		return "main.do";
 	}
 	

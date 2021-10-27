@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav id="menu">
 	<h2>Menu</h2>
-	<h4>닉네임</h4>
+	<h4>${mem.artist}</h4>
 	<ul>
 		<li><a href="main.do">Home</a></li>
 		<li><a href="info.jsp">AboutUs</a></li>
-		<li class="accordian" ><span>Artist</span></li>
+		<li class="accordian" ><span id="accMenu">Artist</span></li>
 		<ul class="accordianMenu">
-			<li><a href="galleryList.do?artist=">1번아티스트</a></li>
+			<li><a href="galleryList.do?artist=tester">tester</a></li>
 			<li><a href="galleryList.do?artist=">2번아티스트</a></li>
 			<li><a href="galleryList.do?artist=">3번아티스트</a></li>
 		</ul>
@@ -19,6 +19,7 @@
 		</c:if>
 		
 		<c:if test="${mem!=null}">
+			<li><a href="insertArt.jsp">addArt</a></li>
 			<li><a href="myGallery.do">myGallery</a></li>
 			<li><a href="logout.do">Logout</a></li>
 		</c:if>

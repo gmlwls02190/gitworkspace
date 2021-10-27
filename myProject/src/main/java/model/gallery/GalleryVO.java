@@ -2,6 +2,8 @@ package model.gallery;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class GalleryVO {
 	
 	private int bid;
@@ -10,7 +12,23 @@ public class GalleryVO {
 	private String artist;
 	private String info;
 	private String gallery;
+	private MultipartFile fileUpload;
 	private Date wdate;
+	
+//	private String condition;
+//	private String keyword;
+//	public String getCondition() {
+//		return condition;
+//	}
+//	public void setCondition(String condition) {
+//		this.condition = condition;
+//	}
+//	public String getKeyword() {
+//		return keyword;
+//	}
+//	public void setKeyword(String keyword) {
+//		this.keyword = keyword;
+//	}
 	
 	public int getBid() {
 		return bid;
@@ -47,6 +65,12 @@ public class GalleryVO {
 	}
 	public void setGallery(String gallery) {
 		this.gallery = gallery;
+	}
+	public MultipartFile getFileUpload() {
+		return fileUpload;
+	}
+	public void setFileUpload(MultipartFile fileUpload) {
+		this.fileUpload = fileUpload;
 	}
 	public Date getWdate() {
 		return wdate;

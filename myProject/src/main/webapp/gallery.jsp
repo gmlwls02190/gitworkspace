@@ -36,25 +36,17 @@
 					<h1>Gallery</h1>
 				</header>
 				<section class="tiles">
+				<c:forEach var="v" items="${datas}">
 					<article class="style1">
-						<span class="image"> <img src="images/pic01.jpg" alt="" />
+						<span class="image"> <img src="${v.gallery}" alt="" />
 						</span> <a href="generic.html">
-							<h2>작가명</h2>
+							<h2>${v.title }</h2>
 							<div class="content">
-								<p></p>
+								<p style="color:black;">${v.info}</p>
 							</div>
 						</a>
 					</article>
-					<article class="style2">
-						<span class="image"> <img src="images/pic02.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Lorem</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
+				</c:forEach>
 				</section>
 			</div>
 		</div>

@@ -8,13 +8,16 @@ select * from member;
 select * from gallery;
 select * from favArtist;
 --=========================================================
+delete MEMBER where id='zxc';
+--=========================================================
 create table member(
 	id varchar(15) primary key,		-- 아이디
 	pw varchar(10) not null,		-- 비밀번호
 	artist varchar(30) not null,	-- 작가명
-	email varchar(50) not null,		-- 이메일
+	firstemail varchar(50) not null,-- 이메일
+	lastemail varchar(50) not null,-- 이메일
 	address varchar(50) not null,	-- 주소
-	callNum int not null,			-- 핸드폰번호
+	callNum varchar(15) not null,	-- 핸드폰번호
 	role varchar(15) not null		-- 회원분류
 );
 
@@ -37,5 +40,5 @@ create table favArtist(
 	wdate date default sysdate		-- 작가등록일
 );
 --=========================================================
-insert into member values('qwe','qwe','tester','qweqwe@naver.com','주소미정','01051718893','USER');
-insert into member values('asd','asd','비둘기구구','ksh02190@naver.com','주소미정','01011112222','USER');
+insert into member values('qwe','qwe','tester','qweqwe','@naver.com','주소미정','01051718893','USER');
+insert into member values('asd','asd','비둘기구구','ksh02190','@naver.com','주소미정','01011112222','USER');

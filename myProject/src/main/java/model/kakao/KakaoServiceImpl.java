@@ -102,11 +102,11 @@ public class KakaoServiceImpl implements KakaoService{
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-            String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
+//            String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 //			System.out.println("nickname: "+nickname);
 			resultMap.put("nickname", nickname);
-            resultMap.put("profile_image", profile_image);
+//            resultMap.put("profile_image", profile_image);
 			resultMap.put("email", email);
 			System.out.println("getUserInfo Finish!!!");
 		} catch (IOException e) {

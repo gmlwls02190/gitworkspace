@@ -51,25 +51,28 @@
 							<form method="post" action="updateMember.do">
 								<div class="row gtr-uniform">
 									<div class="col-12">
-										<input type="text" name="id" id="" value="" placeholder="ID" />
+										<input type="text" name="id" id="" value="${mem.id}" readonly/>
 									</div>
 									<div class="col-12">
-										<input type="password" name="pw" id="" value="" placeholder="PW" />
+										<input type="password" name="pw" id="" value="${mem.pw}" />
 									</div>
 									<div class="col-12">
-										<input type="text" name="id" id="" value="" placeholder="Artist" />
+										<input type="text" name="artist" id="" value="${mem.artist}" />
 									</div>
 									<div class="col-12">
-										<input type="email" name="email" id="" value=""
-											placeholder="Email" />
+										<input type="text" name="address" id="" value="${mem.address}" />
 									</div>
 									<div class="col-12">
-										<input type="text" name="address" id="" value=""
-											placeholder="Address" />
+										<input type="text" name="firstemail" id="" value="${mem.firstemail}" />
+										<select name="lastemail">
+											<option selected>@gmail.com</option>
+											<option>@naver.com</option>
+											<option>@daum.net</option>
+											<option>@hotmail.com</option>
+										</select>
 									</div>
 									<div class="col-12">
-										<input type="text" name="callNum" id="" value=""
-											placeholder="CallNumber" />
+										<input type="text" name="callNum" id="" value="${mem.callNum}" />
 									</div>
 									<div class="col-12">
 										<ul class="actions">

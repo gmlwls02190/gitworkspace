@@ -32,7 +32,7 @@ public class KakaoController {
 		
 		System.out.println("loginUrl: "+loginUrl.toString());
 		
-		return "redirect:"+loginUrl.toString();
+		return "redirect:"+loginUrl.toString(); // 카카오콜백으로 이동
 	}
 	
 	@RequestMapping(value="/kakaoCallback.do", method=RequestMethod.GET)
@@ -48,13 +48,13 @@ public class KakaoController {
 		System.out.println("컨트롤러 출력: "+result.get("nickname")+"/"+result.get("profile_image")+"/"+result.get("email"));
 		KakaoVO kakaoVO=new KakaoVO();
 		kakaoVO.setUser_name((String)result.get("nickname"));
-		kakaoVO.setProfile_img((String)result.get("profile_image"));
+//		kakaoVO.setProfile_img((String)result.get("profile_image"));
 		kakaoVO.setEmail((String)result.get("email"));
 		
 		session.setAttribute("kakaoVO", kakaoVO);
 		session.setAttribute("kakaoToken", kakaoToken);
 		System.out.println("check");
-		return "redirect:kakao.jsp";
+		return "redirect:main.do";
 	}
 	
 	@RequestMapping(value="/kakaoLogout.do")
@@ -71,7 +71,7 @@ public class KakaoController {
 //        message.put("msg", "로그아웃 되었습니다");
 //        message.put("type","alert");
 //        modelMap.addAttribute("message",message);
-        return "kakao.jsp";
+        return "main.do";
     }
 
 }

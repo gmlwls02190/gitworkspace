@@ -2583,6 +2583,7 @@ input, select, textarea {
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
 			width: calc(33.33333% - 2.5em);
+			height: fit-content;
 			margin: 2.5em 0 0 2.5em;
 		}
 
@@ -3387,3 +3388,31 @@ input, select, textarea {
 	border-top: 0;
 	margin-top: -1em;
 }
+
+.artImg{
+	width: calc(50% - 2.5em) !important;
+}
+
+/* ÇÏÆ® */
+  .heart {
+    width: 25px;
+    height: 25px;
+    background: #ea2027;
+    position: relative;
+    transform: rotate(45deg);
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    border-radius: 50%;
+    background: #ea2027;
+  }
+  .heart::before {
+    left: -50%;
+  }
+  .heart::after {
+    top: -50%;
+  }

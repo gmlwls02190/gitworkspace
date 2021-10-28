@@ -11,6 +11,33 @@
 <html>
 <head>
 <title>Phantom by HTML5 UP</title>
+<script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	var selFile;
+	
+	$(document).ready(function(){
+		$("#fileUpload").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e){
+		var files=e.target.files;
+		var filesArr=Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f){
+			if(!f.type.match("image.*")){
+				alert("이미지만 등록가능합니다")
+				return;
+			}
+			selFile=f;
+			
+			var reader=new FileReader();
+			reader.onload=function(e){
+				$("#preImg").attr("src",e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+</script>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -45,7 +72,10 @@
 							<input type="text" name="artist" value="${mem.artist }">
 						</div>
 						<div class="col-12">
-							<input type="file" name="fileUpload">
+							<article>
+								<span class="image"><img id="preImg"/></span>
+							</article>
+							<input type="file" name="fileUpload" id="fileUpload">
 						</div>
 						<div class="col-12">
 							<textarea rows="1" cols="200" placeholder="작품설명" name="info"></textarea>

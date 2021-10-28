@@ -18,13 +18,23 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping("toLogin.do")
+	public String toLogin() {
+		return "login.jsp";
+	}
+	
 	@RequestMapping(value="/login.do",method=RequestMethod.POST)
 	public String login(HttpServletRequest request,MemberVO vo) {
 		MemberVO mem=memberService.getOneMember(vo);
 		
+		if(vo.getId()==null || vo.getId().equals("")) {
+			throw new IllegalArgumentException("아이디 공백에러");
+		}
+		
 		if(mem==null) {
 			// id error
-			return "redirect:login.jsp";
+			System.out.println("ID Error!!");
+			return "redirect:toLogin.do?mode=login";
 		}
 		else {
 			if(mem.getPw().equals(vo.getPw())) {
@@ -34,7 +44,8 @@ public class MemberController {
 			}
 			else {
 				// pw error
-				return "redirect:login.jsp";
+				System.out.println("PW Error!!");
+				return "redirect:toLogin.do?mode=login";
 			}
 		}
 	}
@@ -56,13 +67,18 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/signUp.do")
-	public String signUp(MemberVO vo) {
+	public String signUp(HttpServletRequest request,MemberVO vo) {
 		if(memberService.insertMember(vo)) {
-			return "login.jsp";
+			return "toLogin.do?mode=login";
 		}
 		else {
 			return "redirect:main.do";
 		}
+	}
+	
+	@RequestMapping("/editMember.do")
+	public String editMember() {
+		return "editMember.jsp";
 	}
 	
 	@RequestMapping("/updateMember.do")

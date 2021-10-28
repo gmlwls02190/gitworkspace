@@ -18,6 +18,23 @@
 	    <property name="maxUploadSize" value="-1"/>
 	</bean>
 	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>message.ms</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 현업에서 session에 접속위치정보를 저장하는 경우가 많아서 SessionLocale사용 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+	
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="lang"/>
+		</bean>
+	</mvc:interceptors>
+	
 	<!-- 예외처리를 수행할 설정 -->
 	<!-- <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">

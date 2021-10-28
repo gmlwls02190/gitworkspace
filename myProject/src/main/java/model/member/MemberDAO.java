@@ -14,9 +14,9 @@ public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
-	private final String insertSQL ="insert into member values(?,?,?,?,?,?,'USER')";
-	private final String updateSQL ="update member set password=?, artist=?, email=?, address=?, callNum=? where id=?";
+
+	private final String insertSQL ="insert into member values(?,?,?,?,?,?,?,'USER')";
+	private final String updateSQL ="update member set pw=?, artist=?, firstemail=?, lastemail=?, address=?, callNum=? where id=?";
 	private final String deleteSQL ="delete from member where id=?";
 	private final String getOneSQL ="select * from member where id=?";
 	
@@ -30,9 +30,10 @@ public class MemberDAO {
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
 			pstmt.setString(3, vo.getArtist());
-			pstmt.setString(4, vo.getEmail());
-			pstmt.setString(5, vo.getAddress());
-			pstmt.setInt(6, vo.getCallNum());
+			pstmt.setString(4, vo.getFirstemail());
+			pstmt.setString(5, vo.getLastemail());
+			pstmt.setString(6, vo.getAddress());
+			pstmt.setString(7, vo.getCallNum());
 			pstmt.executeUpdate();
 			flag=true;
 		}catch(Exception e) {
@@ -53,10 +54,11 @@ public class MemberDAO {
 			pstmt=conn.prepareStatement(updateSQL);
 			pstmt.setString(1, vo.getPw());
 			pstmt.setString(2, vo.getArtist());
-			pstmt.setString(3, vo.getEmail());
-			pstmt.setString(4, vo.getAddress());
-			pstmt.setInt(5, vo.getCallNum());
-			pstmt.setString(6, vo.getId());
+			pstmt.setString(3, vo.getFirstemail());
+			pstmt.setString(4, vo.getLastemail());
+			pstmt.setString(5, vo.getAddress());
+			pstmt.setString(6, vo.getCallNum());
+			pstmt.setString(7, vo.getId());
 			pstmt.executeUpdate();
 			flag=true;
 		}catch(Exception e) {
@@ -100,8 +102,9 @@ public class MemberDAO {
 				data=new MemberVO();
 				data.setAddress(rs.getString("address"));
 				data.setArtist(rs.getString("artist"));
-				data.setCallNum(rs.getInt("callNUm"));
-				data.setEmail(rs.getString("email"));
+				data.setCallNum(rs.getString("callNUm"));
+				data.setFirstemail(rs.getString("firstemail"));
+				data.setLastemail(rs.getString("lastemail"));
 				data.setId(rs.getString("id"));
 				data.setPw(rs.getString("pw"));
 				data.setRole(rs.getString("role"));

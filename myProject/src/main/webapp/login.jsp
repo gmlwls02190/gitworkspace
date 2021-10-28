@@ -11,15 +11,13 @@
 <html>
 <head>
 <title>Phantom by HTML5 UP</title>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script type="text/javascript">
-	Kakao.init('cc78e1e3d846c9f6c4dafc8b6247aed0');
-	
-	console.log(Kakao.isInitialized());
-</script>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
 <script type="text/javascript">
 	function reg() {
-		document.location.href = "login.jsp?mode=signUp";
+		document.location.href = "toLogin.do?mode=signUp";
+	}
+	function kakaoLogin(){
+		document.location.href="kakaoLogin.do";
 	}
 </script>
 <meta charset="utf-8" />
@@ -61,8 +59,7 @@
 										<input type="text" name="id" id="id" value="" placeholder="ID" />
 									</div>
 									<div class="col-12">
-										<input type="password" name="pw" id="pw" value=""
-											placeholder="PW" />
+										<input type="password" name="pw" id="pw" value="" placeholder="PW" />
 									</div>
 									<div class="col-12">
 										<ul class="actions">
@@ -75,7 +72,7 @@
 						</article>
 						<article class="style4">
 							<ul class="actions">
-								<li><a href="javascript:loginWithKakao()"><img alt="" src="images/kakaoLogin.png"></a></li>
+								<li><img alt="" src="images/kakaoLogin.png" onclick="kakaoLogin()" style="cursor: pointer;"></li>
 							</ul>
 						</article>	
 					</section>
@@ -94,26 +91,20 @@
 										<input type="text" name="id" id="" value="" placeholder="ID" />
 									</div>
 									<div class="col-12">
-										<input type="password" name="pw" id="" value=""
-											placeholder="PW" />
+										<input type="password" name="pw" id="" value="" placeholder="PW" />
 									</div>
 									<div class="col-12">
-										<input type="password" name="pw" id="" value=""
-											placeholder="PW" />
+										<input type="password" name="repw" id="" value="" placeholder="RePW" />
 									</div>
 									<div class="col-12">
-										<input type="text" name="artist" id="" value=""
-											placeholder="Artist" />
+										<input type="text" name="artist" id="" value="" placeholder="Artist" />
 									</div>
 									<div class="col-12">
-										<input type="email" name="email" id="" value=""
-											placeholder="Email" />
+										<input type="text" name="address" id="" value="" placeholder="Address" />
 									</div>
 									<div class="col-12">
-										<input type="text" name="firstAddress" id="" value=""
-											placeholder="Address" />
-											<input type="hidden" name="middleAddress" value="@">
-										<select name="lastAddress">
+										<input type="text" name="firstemail" id="" value="" placeholder="Email" />
+										<select name="lastemail">
 											<option selected>@gmail.com</option>
 											<option>@naver.com</option>
 											<option>@daum.net</option>

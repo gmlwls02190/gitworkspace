@@ -32,138 +32,47 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<header>
-					<h1>
-						This is Phantom, a free, fully responsive site<br /> template
-						designed by <a href="http://html5up.net">HTML5 UP</a>.
-					</h1>
-					<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu
-						euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu
-						vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros
-						aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
-				</header>
-				<section class="tiles">
-					<article class="style1">
-						<span class="image"> <img src="images/pic01.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Magna</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
+			<section class="tiles">
+					<article class="artImg">
+						<span class="image"><img src="${data.gallery}" alt="${data.title}" /></span>
 					</article>
-					<article class="style2">
-						<span class="image"> <img src="images/pic02.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Lorem</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
+					<article class="artImg">
+						<%-- <div>
+							<div>
+								<strong>${data.title}</strong>
 							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image"> <img src="images/pic03.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Feugiat</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style4">
-						<span class="image"> <img src="images/pic04.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Tempus</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image"> <img src="images/pic05.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Aliquam</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image"> <img src="images/pic06.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Veroeros</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style2">
-						<span class="image"> <img src="images/pic07.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Ipsum</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image"> <img src="images/pic08.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Dolor</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style1">
-						<span class="image"> <img src="images/pic09.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Nullam</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image"> <img src="images/pic10.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Ultricies</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image"> <img src="images/pic11.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Dictum</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style4">
-						<span class="image"> <img src="images/pic12.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Pretium</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
+							<div class="heart"></div>
+						</div> --%>
+						<h1>${data.title}</h1>
+						<div>
+							<table>
+								<tr>
+									<td>작가</td><td>${data.artist}</td>
+								</tr>
+								<tr>
+									<td>작품번호</td><td>${data.bid}</td>
+								</tr>
+								<tr>
+									<td>작품설명</td><td>${data.info}</td>
+								</tr>
+								<tr>
+									<td>등록일</td><td>${data.wdate}</td>
+								</tr>
+								<c:if test="${mem.id==data.id}">
+									<tr>
+										<td colspan="2" style="text-align:end;"><a href="editGallery.do?bid=${data.bid}" class="button">수정</a></td>
+									</tr>
+								</c:if>
+							</table>
+						</div>
 					</article>
 				</section>
+				<div class="content" style="text-align: center; border: ridge; height:80vh; overflow:hidden;">
+					<img src="${data.gallery}" alt="${data.title}" style="width:100%; height:100%;"/>
+				</div>
+				<div style="padding-top: 1.5em; text-align: center;">
+					<a class="button primary" href="galleryList.do">목록</a>
+				</div>
 			</div>
 		</div>
 

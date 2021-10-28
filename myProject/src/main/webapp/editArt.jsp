@@ -11,6 +11,33 @@
 <html>
 <head>
 <title>Phantom by HTML5 UP</title>
+<script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	var selFile;
+	
+	$(document).ready(function(){
+		$("#fileUpload").on("change", handleImgFileSelect);
+	});
+	
+	function handleImgFileSelect(e){
+		var files=e.target.files;
+		var filesArr=Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f){
+			if(!f.type.match("image.*")){
+				alert("이미지만 등록가능합니다")
+				return;
+			}
+			selFile=f;
+			
+			var reader=new FileReader();
+			reader.onload=function(e){
+				$("#preImg").attr("src",e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+</script>
 <script type="text/javascript">
 	function deleteArt(bid){
 		document.location.href="deleteGallery.do?bid="+bid;
@@ -40,26 +67,27 @@
 				<header>
 					<h1>Edit the Gallery</h1>
 				</header>
-				<form action="addGallery.do" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="bid" value="작품번호">
-					<input type="hidden" name="id" value="회원아이디">
+				<form action="updateGallery.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="bid" value="${data.bid}">
+					<input type="hidden" name="id" value="${data.id}">
 					<div class="row gtr-uniform">
 						<div class="col-12">
-							<input type="text" name="title" value="작품명">
+							<input type="text" name="title" value="${data.title}">
 						</div>
 						<div class="col-12">
-							<input type="text" name="artist" value="작가명">
+							<input type="text" name="artist" value="${data.artist}">
 						</div>
 						<div class="col-12">
-							<input type="file" name="gallery">
+							<span class="image"><img id="preImg"/></span>
+							<span><input type="file" name="fileUpload" id="fileUpload"></span>
 						</div>
 						<div class="col-12">
-							<textarea rows="1" cols="200" placeholder="작품설명"></textarea>
+							<textarea rows="1" cols="200" placeholder="작품설명" name="info">${data.info}</textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">
 								<li><input type="submit" value="Edit" class="primary"></li>
-								<li><input type="button" onClick="deleteArt(bid)" value="Delete"></li>
+								<li><input type="button" onClick="deleteArt(${data.bid})" value="Delete"></li>
 							</ul>
 						</div>
 					</div>

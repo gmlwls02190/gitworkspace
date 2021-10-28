@@ -38,11 +38,11 @@
 				<section class="tiles">
 				<c:forEach var="v" items="${datas}">
 					<article class="style1">
-						<span class="image"> <img src="${v.gallery}" alt="" />
-						</span> <a href="generic.html">
-							<h2>${v.title }</h2>
+						<span class="image"> <img src="${v.gallery}" alt="${v.title}" />
+						</span> <a href="gallery.do?bid=${v.bid}">
+							<h2>${v.title}</h2>
 							<div class="content">
-								<p style="color:black;">${v.info}</p>
+								<strong><p style="color:black;">${v.artist}</p></strong>
 							</div>
 						</a>
 					</article>

@@ -5,9 +5,10 @@ public class MemberVO {
 	private String id;
 	private String pw;
 	private String artist;
-	private String email;
+	private String firstemail;
+	private String lastemail;
 	private String address;
-	private int callNum;
+	private String callNum;
 	private String role;
 	
 	public String getId() {
@@ -28,11 +29,17 @@ public class MemberVO {
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
-	public String getEmail() {
-		return email;
+	public String getFirstemail() {
+		return firstemail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setFirstemail(String firstemail) {
+		this.firstemail = firstemail;
+	}
+	public String getLastemail() {
+		return lastemail;
+	}
+	public void setLastemail(String lastemail) {
+		this.lastemail = lastemail;
 	}
 	public String getAddress() {
 		return address;
@@ -40,10 +47,10 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getCallNum() {
+	public String getCallNum() {
 		return callNum;
 	}
-	public void setCallNum(int callNum) {
+	public void setCallNum(String callNum) {
 		this.callNum = callNum;
 	}
 	public String getRole() {
@@ -54,7 +61,7 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemVO [id=" + id + ", pw=" + pw + ", artist=" + artist + ", email=" + email + ", address=" + address
-				+ ", callNum=" + callNum + ", role=" + role + "]";
+		return "MemberVO [id=" + id + ", pw=" + pw + ", artist=" + artist + ", firstemail=" + firstemail
+				+ ", lastemail=" + lastemail + ", address=" + address + ", callNum=" + callNum + ", role=" + role + "]";
 	}
 }

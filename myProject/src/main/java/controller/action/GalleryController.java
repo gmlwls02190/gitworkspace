@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,11 @@ public class GalleryController {
 		return "main.jsp";
 	}
 	
+	@RequestMapping("info.do")
+	public String info() {
+		return "info.jsp";
+	}
+	
 	@RequestMapping("/galleryList.do")
 	public String galleryList(@RequestParam(value="stat",defaultValue="",required=false)String stat,GalleryVO vo,Model model) {
 		ArrayList<GalleryVO> datas=galleryService.getGalleryList(vo);
@@ -57,6 +63,11 @@ public class GalleryController {
 		return "art.jsp";
 	}
 	
+	@RequestMapping("insertArt.do")
+	public String insertArt() {
+		return "insertArt.jsp";
+	}
+	
 	@RequestMapping("/addGallery.do")
 	public String addGallery(GalleryVO vo) throws IllegalStateException, IOException {
 		System.out.println("vo: "+vo);
@@ -64,9 +75,12 @@ public class GalleryController {
 		if(!gallery.isEmpty()) {
 			String fileName=gallery.getOriginalFilename();
 			System.out.println("fileName: "+fileName);
-			gallery.transferTo(new File("D:\\JAVA\\HEEJIN_0622\\resource\\images\\"+fileName));
+			String randName=UUID.randomUUID().toString();
+			randName=randName.replace("-", "").substring(22);
+			System.out.println(randName);
+			gallery.transferTo(new File("D:\\JAVAKHJ_0622\\HEEJIN_0622\\resource\\images\\"+randName+fileName));
 			//-------------------------------------------------------------------------------------
-			vo.setGallery("\\images\\"+fileName);
+			vo.setGallery("\\images\\"+randName+fileName);
 		}// /images/filename.jpg
 		galleryService.insertGallery(vo);
 		return "main.do";
@@ -81,7 +95,18 @@ public class GalleryController {
 	}
 	
 	@RequestMapping("/updateGallery.do")
-	public String updateGallery(GalleryVO vo,Model model) {
+	public String updateGallery(GalleryVO vo,Model model) throws IllegalStateException, IOException {
+		MultipartFile gallery=vo.getFileUpload();
+		if(!gallery.isEmpty()) {
+			String fileName=gallery.getOriginalFilename();
+			System.out.println("fileName: "+fileName);
+			String randName=UUID.randomUUID().toString();
+			randName=randName.replace("-", "").substring(22);
+			System.out.println(randName);
+			gallery.transferTo(new File("D:\\JAVAKHJ_0622\\HEEJIN_0622\\resource\\images\\"+randName+fileName));
+			//-------------------------------------------------------------------------------------
+			vo.setGallery("\\images\\"+randName+fileName);
+		}
 		if(galleryService.updateGallery(vo)) {
 			return "gallery.do?bid="+vo.getBid();
 		}

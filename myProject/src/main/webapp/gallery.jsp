@@ -12,8 +12,7 @@
 <head>
 <title>Phantom by HTML5 UP</title>
 <meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
@@ -36,17 +35,17 @@
 					<h1>Gallery</h1>
 				</header>
 				<section class="tiles">
-				<c:forEach var="v" items="${datas}">
-					<article class="style1">
-						<span class="image"> <img src="${v.gallery}" alt="${v.title}" />
-						</span> <a href="gallery.do?bid=${v.bid}">
-							<h2>${v.title}</h2>
-							<div class="content">
-								<strong><p style="color:black;">${v.artist}</p></strong>
-							</div>
-						</a>
-					</article>
-				</c:forEach>
+					<c:forEach var="v" items="${datas}">
+						<article class="style1">
+							<span class="image"><img src="${v.gallery}" alt="${v.title}" /></span>
+							<a href="gallery.do?bid=${v.bid}">
+								<h2>${v.title}</h2>
+								<div class="content">
+									<strong><p style="color: black;">${v.artist}</p></strong>
+								</div>
+							</a>
+						</article>
+					</c:forEach>
 				</section>
 			</div>
 		</div>

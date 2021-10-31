@@ -4,7 +4,7 @@
 <nav id="menu">
 	<h2><spring:message code="message.menuBar.menu"/></h2>
 	<c:if test="${mem!=null}">
-		<h4>${mem.artist}</h4>
+		<h4><spring:message code="message.menuBar.name"/> ${mem.artist}</h4>
 	</c:if>
 	<c:if test="${kakaoVO!=null}">
 		<h4>${kakaoVO.user_name}</h4>

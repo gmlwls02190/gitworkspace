@@ -2787,7 +2787,7 @@ input, select, textarea {
 				margin: -2.5em 0 0 -2.5em;
 			}
 
-				.tiles article {
+				.tiles article, .artImg {
 					width: calc(50% - 2.5em);
 					margin: 2.5em 0 0 2.5em;
 				}
@@ -2800,7 +2800,7 @@ input, select, textarea {
 				margin: -1.25em 0 0 -1.25em;
 			}
 
-				.tiles article {
+				.tiles article, .artImg {
 					width: calc(50% - 1.25em);
 					margin: 1.25em 0 0 1.25em;
 				}
@@ -2820,8 +2820,8 @@ input, select, textarea {
 				margin: 0;
 			}
 
-				.tiles article {
-					width: 100%;
+				.tiles article, .artImg {
+					width: 100% !important;
 					margin: 1.25em 0 0 0;
 				}
 

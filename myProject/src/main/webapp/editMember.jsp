@@ -12,7 +12,7 @@
 <head>
 <title>Phantom by HTML5 UP</title>
 <script type="text/javascript">
-	function deleteMem(id){
+	function deleteMember(id){
 		document.location.href="deleteMember.do?id="+id;
 	}
 </script>
@@ -77,7 +77,7 @@
 									<div class="col-12">
 										<ul class="actions">
 											<li><input type="submit" value="Edit" class="primary" /></li>
-											<li><input type="button" value="Delete" onClick="deleteMem(id)" /></li>
+											<li><input type="button" onClick="deleteMember('${mem.id}')" value="Delete" /></li>
 										</ul>
 									</div>
 								</div>

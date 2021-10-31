@@ -33,6 +33,7 @@
 			var reader=new FileReader();
 			reader.onload=function(e){
 				$("#preImg").attr("src",e.target.result);
+				$("#nowImg").hide();
 			}
 			reader.readAsDataURL(f);
 		});
@@ -70,6 +71,7 @@
 				<form action="updateGallery.do" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="bid" value="${data.bid}">
 					<input type="hidden" name="id" value="${data.id}">
+					<input type="hidden" name="gallery" value="${data.gallery}">
 					<div class="row gtr-uniform">
 						<div class="col-12">
 							<input type="text" name="title" value="${data.title}">
@@ -79,7 +81,8 @@
 						</div>
 						<div class="col-12">
 							<span class="image"><img id="preImg"/></span>
-							<span><input type="file" name="fileUpload" id="fileUpload"></span>
+							<span class="image" id="nowImg"><img src="${data.gallery}" alt="${data.title}"/></span>
+							<span><input type="file" name="fileUpload" id="fileUpload" ></span>
 						</div>
 						<div class="col-12">
 							<textarea rows="1" cols="200" placeholder="작품설명" name="info">${data.info}</textarea>

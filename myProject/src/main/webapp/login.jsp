@@ -12,6 +12,7 @@
 <head>
 <title>Phantom by HTML5 UP</title>
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+<meta name ="google-signin-client_id" content="334493542272-bm1lfpektcd2mmbhdt8upmrt4jjbsr2i.apps.googleusercontent.com">
 <script type="text/javascript">
 	function reg() {
 		document.location.href = "toLogin.do?mode=signUp";
@@ -61,6 +62,11 @@
 									<div class="col-12">
 										<input type="password" name="pw" id="pw" value="" placeholder="PW" />
 									</div>
+									<c:if test="${str!=null}">
+										<div class="col-12">
+											<span>${str}</span>
+										</div>
+									</c:if>
 									<div class="col-12">
 										<ul class="actions">
 											<li><input type="submit" value="Login" class="primary" /></li>

@@ -43,8 +43,8 @@
 							</div>
 							<div class="heart"></div>
 						</div> --%>
+						<div class="image">
 						<h1>${data.title}</h1>
-						<div>
 							<table>
 								<tr>
 									<td>작가</td><td>${data.artist}</td>
@@ -67,8 +67,8 @@
 						</div>
 					</article>
 				</section>
-				<div class="content" style="text-align: center; border: ridge; height:80vh; overflow:hidden;">
-					<img src="${data.gallery}" alt="${data.title}" style="width:100%; height:100%;"/>
+				<div class="content" style="text-align: center; border: ridge;">
+					<img src="${data.gallery}" alt="${data.title}" style="width:100%; height:100%; display:block;"/>
 				</div>
 				<div style="padding-top: 1.5em; text-align: center;">
 					<a class="button primary" href="galleryList.do">목록</a>

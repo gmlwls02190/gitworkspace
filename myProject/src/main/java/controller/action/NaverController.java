@@ -27,9 +27,9 @@ public class NaverController {
 		SecureRandom random=new SecureRandom();
 		String state=new BigInteger(130, random).toString();
 		loginUrl.append("https://nid.naver.com/oauth2.0/authorize?&client_id=");
-		loginUrl.append("wA0TXX073yMNM4lbmSsR");
+		loginUrl.append("클라이언트아이디");
 		loginUrl.append("&redirect_uri=");
-		loginUrl.append("http://localhost:8088/app/naverCallback.do");
+		loginUrl.append("리다이렉트주소");
 		loginUrl.append("&state="+state);
 		loginUrl.append("&response_type=code");
 		

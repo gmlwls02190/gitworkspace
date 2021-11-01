@@ -24,9 +24,9 @@ public class GoogleController {
 	public String googleLogin() {
 		StringBuffer loginUrl=new StringBuffer();
 		loginUrl.append("https://accounts.google.com/o/oauth2/v2/auth?client_id=");
-		loginUrl.append("334493542272-bm1lfpektcd2mmbhdt8upmrt4jjbsr2i.apps.googleusercontent.com");
+		loginUrl.append("클라이언트아이디");
 		loginUrl.append("&redirect_uri=");
-		loginUrl.append("http://localhost:8088/app/googleCallback.do");
+		loginUrl.append("리다이렉트주소");
 		loginUrl.append("&response_type=code");
 		loginUrl.append("&scope=email%20profile%20openid");
 		loginUrl.append("&access_type=offline");

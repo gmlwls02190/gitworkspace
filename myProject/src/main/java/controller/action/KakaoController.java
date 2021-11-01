@@ -25,9 +25,9 @@ public class KakaoController {
 	public String kakaoLogin() {
 		StringBuffer loginUrl = new StringBuffer();
 		loginUrl.append("https://kauth.kakao.com/oauth/authorize?client_id=");
-		loginUrl.append("a1a82c6ddf498743e99395481ba41136");
+		loginUrl.append("클라이언트아이디");
 		loginUrl.append("&redirect_uri=");
-		loginUrl.append("http://localhost:8088/app/kakaoCallback.do");
+		loginUrl.append("리다이렉트주소");
 		loginUrl.append("&response_type=code");
 		
 		System.out.println("loginUrl: "+loginUrl.toString());

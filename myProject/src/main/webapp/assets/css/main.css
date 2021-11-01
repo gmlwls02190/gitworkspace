@@ -3389,8 +3389,35 @@ input, select, textarea {
 	margin-top: -1em;
 }
 
+/* art.jsp */
 .artImg{
 	width: calc(50% - 2.5em) !important;
+}
+
+/* login.jsp */
+.loginMenu{
+	list-style: none;
+}
+
+.exLogin{
+	width: 100%;
+	height: 3em;
+	cursor: pointer;
+}
+
+.signUpform{
+	width: 60% !important;
+	margin: 0 auto !important;
+}
+
+.signUpMenu{
+	display: inline-block !important;
+	width: 80% !important;
+}
+
+.signUpCheck{
+	display: inline-block;
+	width: 19% !important;
 }
 
 /* ÇÏÆ® */

@@ -27,7 +27,7 @@
 </style>
 <meta charset="utf-8" />
 <script
-	src="http://maps.google.com/maps/api/js?key=API Key&region=kr"></script>
+	src="http://maps.google.com/maps/api/js?key=AIzaSyBIcqzjari0X_391mnXnUvh-gRKjvC9rY0&region=kr"></script>
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />

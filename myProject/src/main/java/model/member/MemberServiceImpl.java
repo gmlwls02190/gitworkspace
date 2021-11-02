@@ -1,5 +1,7 @@
 package model.member;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberVO getOneMember(MemberVO vo) {
 		return dao.getOneMember(vo);
+	}
+
+	@Override
+	public ArrayList<MemberVO> getAllMember() {
+		return dao.getAllMember();
 	}
 
 }

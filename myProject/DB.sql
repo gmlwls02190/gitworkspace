@@ -12,12 +12,14 @@ delete MEMBER where id='zxc';
 --=========================================================
 create table member(
 	id varchar(15) primary key,		-- 아이디
-	pw varchar(10) not null,		-- 비밀번호
+	pw varchar(25) not null,		-- 비밀번호
 	artist varchar(30) not null,	-- 작가명
-	firstemail varchar(50) not null,-- 이메일
-	lastemail varchar(50) not null,-- 이메일
-	address varchar(50) not null,	-- 주소
-	callNum varchar(15) not null,	-- 핸드폰번호
+	firstemail varchar(50) not null,-- 앞이메일
+	lastemail varchar(50) not null,	-- 뒤이메일
+	addrNum varchar(50) not null,	-- 우편번호
+	roadAddr varchar(100) not null,	-- 주소
+	detailAddr varchar(50),			-- 상세주소
+	callNum varchar(15),			-- 핸드폰번호
 	role varchar(15) not null		-- 회원분류
 );
 
@@ -33,12 +35,10 @@ create table gallery(
 
 create table favArtist(
 	favId int primary key,			-- 관심작가번호
-	bid int not null,				-- 작품번호
 	id varchar(15) not null,		-- 회원아이디
-	title varchar(60) not null,		-- 작품명
 	artist varchar(30) not null,	-- 작가명
 	wdate date default sysdate		-- 작가등록일
 );
 --=========================================================
-insert into member values('qwe','qwe','tester','qweqwe','@naver.com','주소미정','01051718893','USER');
+insert into member values('qwe','qwe','tester','qweqwe','@naver.com','0','미정','미정','01051718893','USER');
 insert into member values('asd','asd','비둘기구구','ksh02190','@naver.com','주소미정','01011112222','USER');

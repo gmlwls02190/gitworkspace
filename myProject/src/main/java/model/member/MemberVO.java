@@ -7,10 +7,11 @@ public class MemberVO {
 	private String artist;
 	private String firstemail;
 	private String lastemail;
-	private String address;
+	private String addrNum;
+	private String roadAddr;
+	private String detailAddr;
 	private String callNum;
 	private String role;
-	
 	public String getId() {
 		return id;
 	}
@@ -41,11 +42,23 @@ public class MemberVO {
 	public void setLastemail(String lastemail) {
 		this.lastemail = lastemail;
 	}
-	public String getAddress() {
-		return address;
+	public String getAddrNum() {
+		return addrNum;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddrNum(String addrNum) {
+		this.addrNum = addrNum;
+	}
+	public String getRoadAddr() {
+		return roadAddr;
+	}
+	public void setRoadAddr(String roadAddr) {
+		this.roadAddr = roadAddr;
+	}
+	public String getDetailAddr() {
+		return detailAddr;
+	}
+	public void setDetailAddr(String detailAddr) {
+		this.detailAddr = detailAddr;
 	}
 	public String getCallNum() {
 		return callNum;
@@ -62,6 +75,7 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", pw=" + pw + ", artist=" + artist + ", firstemail=" + firstemail
-				+ ", lastemail=" + lastemail + ", address=" + address + ", callNum=" + callNum + ", role=" + role + "]";
+				+ ", lastemail=" + lastemail + ", addrNum=" + addrNum + ", roadAddr=" + roadAddr + ", detailAddr="
+				+ detailAddr + ", callNum=" + callNum + ", role=" + role + "]";
 	}
 }

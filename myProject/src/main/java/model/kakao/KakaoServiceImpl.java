@@ -16,8 +16,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
-
 @Service("kakaoService")
 public class KakaoServiceImpl implements KakaoService{
 
@@ -39,8 +37,8 @@ public class KakaoServiceImpl implements KakaoService{
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
-			sb.append("&client_id=클라이언트아이디");  //앱 KEY VALUE
-			sb.append("&redirect_uri=리다이렉트주소"); // 앱 CALLBACK 경로
+			sb.append("&client_id=a1a82c6ddf498743e99395481ba41136");  //앱 KEY VALUE
+			sb.append("&redirect_uri=http://localhost:8088/app/kakaoCallback.do"); // 앱 CALLBACK 경로
 			sb.append("&code=" + code);
 			bw.write(sb.toString());
 			bw.flush();

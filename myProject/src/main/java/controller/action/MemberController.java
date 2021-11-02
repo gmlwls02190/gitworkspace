@@ -1,5 +1,7 @@
 package controller.action;
 
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -52,6 +54,8 @@ public class MemberController {
 		else {
 			if(mem.getPw().equals(vo.getPw())) {
 				HttpSession session=request.getSession();
+				ArrayList<MemberVO> memdatas=memberService.getAllMember();
+				session.setAttribute("memdatas", memdatas);
 				session.setAttribute("mem", mem);
 				return "redirect:main.do"; // 'redirect:xxx.do' <-- VR의 설정을 무시하고 redirect
 			}
@@ -160,12 +164,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/checkID.do")
-	public String checkID(MemberVO vo) {
+	public String checkID(MemberVO vo,PrintWriter out) {
 		if(memberService.getOneMember(vo)==null) {
 			System.out.println("if success");
+			out.print("success");
 		}
 		else {
 			System.out.println("if failed");
+			out.print("fail");
+		}
+		return null;
+	}
+	
+	@RequestMapping("/checkArtist.do")
+	public String checkArtist(MemberVO vo,PrintWriter out) {
+		if(memberService.getOneMember(vo)==null) {
+			System.out.println("if success");
+			out.print("success");
+		}
+		else {
+			System.out.println("if failed");
+			out.print("fail");
 		}
 		return null;
 	}

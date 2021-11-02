@@ -19,7 +19,7 @@ public class FavArtistController {
 	@RequestMapping("/addArtist.do")
 	public String addArtist(FavArtistVO vo) {
 		if(favService.insertFav(vo)) {
-			return "gallery.do?bid="+vo.getBid();
+			return "galleryList.do";
 		}
 		return "main.do";
 	}

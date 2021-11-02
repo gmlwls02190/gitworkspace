@@ -19,8 +19,6 @@
 </head>
 <body>
 
-<a href="main.do">메인</a>
-
 <c:if test="${kakaoVO==null }">
 <a href="kakaoLogin.do"><img alt="" src="images/kakaoLogin.png"></a>
 </c:if>

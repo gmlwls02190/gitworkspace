@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,19 +57,13 @@ public class KakaoController {
 	}
 	
 	@RequestMapping(value="/kakaoLogout.do")
-    public String logout(ModelMap modelMap, HttpSession session)throws IOException {
+    public String kakaoLogout(HttpSession session)throws IOException {
         if((String)session.getAttribute("kakaoToken")==null){
-        }else {
+        }
+        else {
             kakaoService.getLogout((String)session.getAttribute("kakaoToken"));
         }
         session.invalidate();
-//        session.setAttribute("kakaoVO", null);
-//        HashMap<String, String> message = new HashMap<String, String>();
-//        message.put("title", "로그아웃");
-//        message.put("script", "location.href='/'");
-//        message.put("msg", "로그아웃 되었습니다");
-//        message.put("type","alert");
-//        modelMap.addAttribute("message",message);
         return "main.do";
     }
 

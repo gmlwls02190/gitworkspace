@@ -55,6 +55,13 @@ public class GalleryController {
 		return "gallery.jsp";
 	}
 	
+	@RequestMapping("/myGallery.do")
+	public String myGallery(@RequestParam(value="stat",defaultValue="",required=false)String stat,GalleryVO vo,Model model) {
+		ArrayList<GalleryVO> datas=galleryService.getGalleryList(vo);
+		model.addAttribute("datas", datas);
+		return "myGallery.jsp";
+	}
+	
 	@RequestMapping("/gallery.do")
 	public String gallery(GalleryVO vo,Model model) {
 		GalleryVO data=galleryService.getGallery(vo);

@@ -3329,7 +3329,7 @@ input, select, textarea {
 
 		}
 		
-/* 아코디언테스트 */
+/* menuBar.tag */
 #accMenu{
 	position: relative;
 	cursor: pointer;
@@ -3389,6 +3389,10 @@ input, select, textarea {
 	margin-top: -1em;
 }
 
+.subMenu{
+	font-style: italic;
+}
+
 /* art.jsp */
 .artImg{
 	width: calc(50% - 2.5em) !important;
@@ -3418,6 +3422,7 @@ input, select, textarea {
 .signUpCheck{
 	display: inline-block;
 	width: 19% !important;
+	text-align: center;
 }
 
 /* 하트 */

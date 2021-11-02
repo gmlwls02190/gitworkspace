@@ -38,9 +38,9 @@ public class NaverServiceImpl implements NaverService{
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
-			sb.append("&client_id=wA0TXX073yMNM4lbmSsR");
-			sb.append("&client_secret=0mkFDTzB8s");
-			sb.append("&redirect_uri=http://localhost:8088/app/naverCallback.do");
+			sb.append("&client_id=클라이언트아이디");
+			sb.append("&client_secret=클라이언트보안");
+			sb.append("&redirect_uri=리다이렉트주소");
 			sb.append("&code="+code);
 			sb.append("&state="+state);
 			bw.write(sb.toString());

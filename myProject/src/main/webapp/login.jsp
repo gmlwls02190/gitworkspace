@@ -11,7 +11,7 @@
 
 <!-- Google -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name ="google-signin-client_id" content="334493542272-bm1lfpektcd2mmbhdt8upmrt4jjbsr2i.apps.googleusercontent.com">
+<meta name ="google-signin-client_id" content="클라이언트아이디">
 
 <!-- Naver -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>

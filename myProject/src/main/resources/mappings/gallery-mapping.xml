@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao">
+<mapper namespace="galleryDAO">
 
 	<!-- SQL문 실행결과 자바객체(VO)를 연결해주는 매퍼(Mapper) -->
 	<!-- <resultMap type="batistest" id="batistestResult">
@@ -9,38 +9,35 @@
 
 	<insert id="insertGallery">
 		<![CDATA[
-		INSERT INTO GALLERY VALUES((SELECT NVL(MAX(BID),0)+1 FROM GALLERY),#{ID},#{TITLE},#{ARTIST},#{INFO},#{GALLERY},SYSDATE)
+		INSERT INTO GALLERY VALUES((SELECT NVL(MAX(BID),0)+1 FROM GALLERY),#{id},#{title},#{artist},#{info},#{gallery},SYSDATE)
 		]]>
 	</insert>
 	
 	<update id="updateGallery">
 		<![CDATA[
-		UPDATE GALLERY SET TITLE=#{TITLE},INFO=#{INFO},GALLERY=#{GALLERY},WDATE=SYSDATE WHERE BID=#{BID}
+		UPDATE GALLERY SET TITLE=#{title},INFO=#{info},GALLERY=#{gallery},WDATE=SYSDATE WHERE BID=#{bid}
 		]]>
 	</update>
 	
 	<delete id="deleteGallery">
 		<![CDATA[
-		DELETE GALLERY WHERE BID=#{BID}
+		DELETE GALLERY WHERE BID=#{bid}
 		]]>
 	</delete>
 	
-	<select id="selectAllGallery" resultType="gallery">
+	<select id="getGalleryList" resultType="gallery">
 		
 		SELECT * FROM GALLERY WHERE 1=1
-		<if test="condition=='TITLE'">
-			AND TITLE LIKE '%'||#{KEYWORD}||'%'
-		</if>
-		<if test="condition=='WRITER'">
-			AND WRITER LIKE '%'||#{KEYWORD}||'%'
+		<if test="artist!=null">
+			AND ARTIST=#{artist}
 		</if>
 		ORDER BY BID DESC
 		
 	</select>
 	
-	<select id="selectOneGallery" resultType="gallery">
+	<select id="getGallery" resultType="gallery">
 		<![CDATA[
-		SELECT * FROM GALLERY WHERE BID=#{BID}
+		SELECT * FROM GALLERY WHERE BID=#{bid}
 		]]>
 	</select>
 

@@ -2,8 +2,8 @@ package controller.action;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -34,20 +34,24 @@ public class GalleryController {
 	
 	@RequestMapping("/main.do")
 	public String mainPage(GalleryVO vo,Model model) {
-		ArrayList<GalleryVO> datas=galleryService.getGalleryList(vo);
+		System.out.println("test: "+vo);
+		List<GalleryVO> datas=galleryService.getGalleryList(vo);
 		model.addAttribute("datas", datas);
 		
 		return "main.jsp";
 	}
 	
-	@RequestMapping("info.do")
+	@RequestMapping("/info.do")
 	public String info() {
 		return "info.jsp";
 	}
 	
 	@RequestMapping("/galleryList.do")
 	public String galleryList(@RequestParam(value="stat",defaultValue="",required=false)String stat,GalleryVO vo,Model model) {
-		ArrayList<GalleryVO> datas=galleryService.getGalleryList(vo);
+		if(vo.getMcnt()==0) {
+			vo.setMcnt(3);
+		}
+		List<GalleryVO> datas=galleryService.getGalleryList(vo);
 		model.addAttribute("datas", datas);
 		if(stat.equals("my")) {
 			return "myGallery.jsp";
@@ -55,9 +59,22 @@ public class GalleryController {
 		return "gallery.jsp";
 	}
 	
+	@RequestMapping("/moreList.do")
+	public String moreList(GalleryVO vo,Model model) {
+		System.out.println("more!!!!!");
+		System.out.println("mcnt: "+vo.getMcnt());
+		if(vo.getMcnt()==0) {
+			vo.setMcnt(6);
+		}
+		List<GalleryVO> datas=galleryService.getGalleryList(vo);
+		model.addAttribute("datas", datas);
+		
+		return "gallery.jsp";
+	}
+	
 	@RequestMapping("/myGallery.do")
 	public String myGallery(@RequestParam(value="stat",defaultValue="",required=false)String stat,GalleryVO vo,Model model) {
-		ArrayList<GalleryVO> datas=galleryService.getGalleryList(vo);
+		List<GalleryVO> datas=galleryService.getGalleryList(vo);
 		model.addAttribute("datas", datas);
 		return "myGallery.jsp";
 	}
@@ -114,17 +131,13 @@ public class GalleryController {
 			//-------------------------------------------------------------------------------------
 			vo.setGallery("\\images\\"+randName+fileName);
 		}
-		if(galleryService.updateGallery(vo)) {
-			return "gallery.do?bid="+vo.getBid();
-		}
-		return "main.do";
+		galleryService.updateGallery(vo);
+		return "gallery.do?bid="+vo.getBid();
 	}
 	
 	@RequestMapping("/deleteGallery.do")
 	public String deleteGallery(GalleryVO vo,Model model) {
-		if(galleryService.deleteGallery(vo)) {
-			return "galleryList.do";
-		}
-		return "main.do";
+		galleryService.deleteGallery(vo);
+		return "galleryList.do";
 	}
 }

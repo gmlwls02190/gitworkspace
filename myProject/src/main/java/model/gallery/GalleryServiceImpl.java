@@ -1,6 +1,6 @@
 package model.gallery;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ public class GalleryServiceImpl implements GalleryService{
 	private GalleryDAO dao;
 	
 	@Override
-	public ArrayList<GalleryVO> getGalleryList(GalleryVO vo) {
+	public List<GalleryVO> getGalleryList(GalleryVO vo) {
 		return dao.getGalleryList(vo);
 	}
 

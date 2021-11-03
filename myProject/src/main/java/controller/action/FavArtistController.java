@@ -1,6 +1,6 @@
 package controller.action;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class FavArtistController {
 	
 	@RequestMapping("/myArtist.do")
 	public String myArtist(FavArtistVO vo,Model model) {
-		ArrayList<FavArtistVO> datas=favService.getFavList(vo);
+		List<FavArtistVO> datas=favService.getFavList(vo);
 		model.addAttribute("datas", datas);
 		
 		return "myGallery.jsp?stat=fav";

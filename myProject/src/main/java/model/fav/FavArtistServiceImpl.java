@@ -1,6 +1,6 @@
 package model.fav;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class FavArtistServiceImpl implements FavArtistService{
 	}
 
 	@Override
-	public ArrayList<FavArtistVO> getFavList(FavArtistVO vo) {
+	public List<FavArtistVO> getFavList(FavArtistVO vo) {
 		return dao.getFavList(vo);
 	}
 

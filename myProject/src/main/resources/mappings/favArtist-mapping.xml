@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="favDAO">
+
+	<!-- SQL문 실행결과 자바객체(VO)를 연결해주는 매퍼(Mapper) -->
+	<!-- <resultMap type="batistest" id="batistestResult">
+		<result property="title" column="TITLE"/>
+	</resultMap> -->
+
+	<insert id="insertFav">
+		<![CDATA[
+		INSERT INTO FAVARTIST VALUES((SELECT NVL(MAX(FAVID),0)+1 FROM FAVARTIST),#{id},#{artist},SYSDATE)
+		]]>
+	</insert>
+	
+	<delete id="deleteFav">
+		<![CDATA[
+		DELETE FAVARTIST WHERE FAVID=#{favid}
+		]]>
+	</delete>
+	
+	<select id="getFavList" resultType="favArtist">
+		<![CDATA[
+		SELECT * FROM FAVARTIST WHERE ID=#{id} ORDER BY FAVID DESC
+		]]>
+	</select>
+
+</mapper>

@@ -14,6 +14,7 @@ public class GalleryVO {
 	private String gallery;
 	private MultipartFile fileUpload;
 	private Date wdate;
+	private int mcnt;
 	
 //	private String condition;
 //	private String keyword;
@@ -77,6 +78,12 @@ public class GalleryVO {
 	}
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
+	}
+	public int getMcnt() {
+		return mcnt;
+	}
+	public void setMcnt(int mcnt) {
+		this.mcnt = mcnt;
 	}
 	@Override
 	public String toString() {

@@ -101,7 +101,7 @@ MemberVO.java / MemberDAO.java / FavArtistController.java / editMember.jsp
 menuBar.tag / MemberService.java / MemberServiceImpl.java / 
 
 추가된 파일
-login.js
+login.js / SpringFavArtistDAO.java / SpringGalleryDAO.java / SpringMemberDAO.java
 
 아이디 및 작가명 중복검사 ajax처리 완료
 회원가입 유효성검사 작업 완료
@@ -116,8 +116,29 @@ login.js
 로그인 안 했을 경우 작가 안보이게 수정
 컨트롤러에서 로그인시 멤버전체 검색후 세션에 저장하게 수정
 
+스프링DAO 추가
 
 관심작가추가 ajax로 구현 예정
+===================================================================================
+
+11.03
+===================================================================================
+수정된 파일
+GalleryDAO.java / SpringGallery.java / GalleryService.java / GalleryServiceImpl.java
+MemberDAO.java / SpringMemberDAO.java / MemberService.java / MemberServiceImpl.java
+FavArtistDAO.java / SpringFavArtistDAO.java / FavArtistService.java / FavArtistServiceImpl.java
+gallery-mapping.xml /  gallery.jsp / GalleryController.java / GalleryVO.java / sql-map-config.xml
+
+추가된 파일
+MybatisGalleryDAO.java / MybatisMemberDAO.java / MybatisFavArtistDAO.java
+favArtist-mapping.xml / member-mapping.xml /
+
+각DAO에 ArrayList를 List로 변경
+스프링과 마이바티스 CUD부분 아웃풋 boolean타입으로 변경
+마이바티스DAO 추가 작성
+마이바티스DAO를 위해 .xml에 sql문 작성
+
+더보기 버튼 구현중
 ===================================================================================
 ===================================================================================
 ===================================================================================

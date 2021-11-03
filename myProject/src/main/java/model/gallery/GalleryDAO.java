@@ -16,7 +16,7 @@ public class GalleryDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	private final String getAllSQL="select * from gallery order by bid desc";
+	private final String getAllSQL="select * from (select * from gallery order by bid desc) where rownum <= ?";
 //	private final String myAllSQL="select * from gallery where id=? order by bid desc";
 	private final String artistAllSQL="select * from gallery where artist=? order by bid desc";
 	private final String getOneSQL="select * from gallery where bid=?";
@@ -25,13 +25,15 @@ public class GalleryDAO {
 	private final String deleteSQL="delete gallery where bid=?";
 
 	public ArrayList<GalleryVO> getGalleryList(GalleryVO vo) {
+		System.out.println("dao mcnt: "+vo.getMcnt());
 		conn=JDBC.getConnection();
 		pstmt=null;
 		ArrayList<GalleryVO> datas=new ArrayList<GalleryVO>();
 		try {
 			if(vo.getArtist()==null || vo.getArtist()=="") {
 				System.out.println("All!!");
-				pstmt=conn.prepareStatement(getAllSQL);								
+				pstmt=conn.prepareStatement(getAllSQL);
+				pstmt.setInt(1, vo.getMcnt());
 			}
 			else {
 				System.out.println("ArtistAll!!");

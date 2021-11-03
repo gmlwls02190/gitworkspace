@@ -102,7 +102,7 @@ public class MemberDAO {
 		pstmt=null;
 		MemberVO data=null;
 		try {
-			if(vo.getId()!=null || vo.getId()=="") {
+			if(vo.getId()!=null || vo.getId()!="") {
 				pstmt=conn.prepareStatement(getOneSQL);
 				pstmt.setString(1, vo.getId());
 			}

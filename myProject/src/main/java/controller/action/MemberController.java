@@ -1,7 +1,7 @@
 package controller.action;
 
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -54,7 +54,7 @@ public class MemberController {
 		else {
 			if(mem.getPw().equals(vo.getPw())) {
 				HttpSession session=request.getSession();
-				ArrayList<MemberVO> memdatas=memberService.getAllMember();
+				List<MemberVO> memdatas=memberService.getAllMember();
 				session.setAttribute("memdatas", memdatas);
 				session.setAttribute("mem", mem);
 				return "redirect:main.do"; // 'redirect:xxx.do' <-- VR의 설정을 무시하고 redirect

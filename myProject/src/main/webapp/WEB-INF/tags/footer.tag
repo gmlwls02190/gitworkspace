@@ -1,24 +1,25 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <footer id="footer">
 	<div class="inner">
 		<section>
 			<h2>COMPANY</h2>
 			<div>
-				<span>(주) 희진 아트 갤러리</span>
+				<span><spring:message code="message.footer.company"/></span>
 				<br>
-				<span>대표자: 김희진</span>
+				<span><spring:message code="message.footer.ceo"/></span>
 				<br>
-				<span>희진갤러리: 서울특별시 강남구 역삼동 736-7</span>
+				<span><spring:message code="message.footer.location"/></span>
 			</div>
 		</section>
 		<section>
 			<h2>BANK</h2>
 			<div>
-				<span>개인정보관리 책임자: 김희진</span>
+				<span><spring:message code="message.footer.manager"/></span>
 				<br>
-				<span>입금계좌: 우리은행 1002-750-046152</span>
+				<span><spring:message code="message.footer.account"/></span>
 				<br>
-				<span>예금주: 김희진</span>
+				<span><spring:message code="message.footer.accountHolder"/></span>
 			</div>
 		</section>
 		<ul class="copyright">

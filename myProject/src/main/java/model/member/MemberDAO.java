@@ -18,6 +18,7 @@ public class MemberDAO {
 
 	private final String insertSQL ="insert into member values(?,?,?,?,?,?,?,?,?,'USER')";
 	private final String updateSQL ="update member set pw=?, artist=?, firstemail=?, lastemail=?, addrNum=?, roadAddr=?, detailAddr=?, callNum=? where id=?";
+	private final String updatePwSQL ="update member set pw=? where id=?";
 	private final String deleteSQL ="delete from member where id=?";
 	private final String getOneSQL ="select * from member where id=?";
 	private final String getArtistSQL ="select * from member where artist=?";
@@ -66,6 +67,26 @@ public class MemberDAO {
 			pstmt.setString(7, vo.getDetailAddr());
 			pstmt.setString(8, vo.getCallNum());
 			pstmt.setString(9, vo.getId());
+			pstmt.executeUpdate();
+			flag=true;
+		}catch(Exception e) {
+			System.out.println("updateMember error");
+			e.printStackTrace();
+		}finally {
+			JDBC.close(conn, pstmt);
+		}
+		return flag;
+	}
+	
+	public boolean updateMemberPW(MemberVO vo) {	
+		System.out.println("updateMember!!!");
+		conn=JDBC.getConnection();
+		pstmt=null;
+		boolean flag=false;
+		try {
+			pstmt=conn.prepareStatement(updatePwSQL);
+			pstmt.setString(1, vo.getPw());
+			pstmt.setString(2, vo.getId());
 			pstmt.executeUpdate();
 			flag=true;
 		}catch(Exception e) {

@@ -2,18 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
-<title>Phantom by HTML5 UP</title>
+<title>HJ Art Gallery</title>
+<mytag:favicon/>
 <meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <noscript>
 	<link rel="stylesheet" href="assets/css/noscript.css" />
@@ -33,137 +29,69 @@
 		<div id="main">
 			<div class="inner">
 				<header>
-					<h1>
-						This is Phantom, a free, fully responsive site<br /> template
-						designed by <a href="http://html5up.net">HTML5 UP</a>.
-					</h1>
-					<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu
-						euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu
-						vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros
-						aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+					<h1><spring:message code="message.myGallery.main"/></h1>
 				</header>
 				<section class="tiles">
-					<article class="style1">
-						<span class="image"> <img src="images/pic01.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Magna</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style2">
-						<span class="image"> <img src="images/pic02.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Lorem</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image"> <img src="images/pic03.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Feugiat</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style4">
-						<span class="image"> <img src="images/pic04.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Tempus</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image"> <img src="images/pic05.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Aliquam</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image"> <img src="images/pic06.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Veroeros</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style2">
-						<span class="image"> <img src="images/pic07.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Ipsum</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image"> <img src="images/pic08.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Dolor</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style1">
-						<span class="image"> <img src="images/pic09.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Nullam</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image"> <img src="images/pic10.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Ultricies</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image"> <img src="images/pic11.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Dictum</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style4">
-						<span class="image"> <img src="images/pic12.jpg" alt="" />
-						</span> <a href="generic.html">
-							<h2>Pretium</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor
-									veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
+					<c:forEach var="v" items="${datas}">
+						<article class="style1">
+							<span class="image"><img src="/images/${v.gallery}" alt="${v.title}" /></span>
+							<a href="gallery.do?bid=${v.bid}">
+								<h2>${v.title}</h2>
+								<div class="content">
+									<strong><p style="color: black;">${v.artist}</p></strong>
+								</div>
+							</a>
+						</article>
+					</c:forEach>
 				</section>
+					<c:if test="${stat=='fav'}">
+						<div class="paging" style="text-align: center; margin: 2em 0 0 0;">
+							<c:if test="${paging.pageNo==paging.firstPageNo}">
+								<a href="myArtist.do?id=${mem.id}&page=${paging.prevPageNo}" class="button primary disabled"><spring:message code="message.myGallery.prev"/></a>
+							</c:if>
+							<c:if test="${paging.pageNo!=paging.firstPageNo}">
+								<a href="myArtist.do?id=${mem.id}&page=${paging.prevPageNo}" class="button primary"><spring:message code="message.myGallery.prev"/></a>
+							</c:if>
+							<c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+								<c:if test="${paging.pageNo==i}">
+									<a href="myArtist.do?id=${mem.id}&page=${i}" class="button disabled">${i}</a>
+								</c:if>
+								<c:if test="${paging.pageNo!=i}">
+									<a href="myArtist.do?id=${mem.id}&page=${i}" class="button">${i}</a>
+								</c:if>
+							</c:forEach>
+							<c:if test="${paging.pageNo==paging.finalPageNo}">
+								<a href="myArtist.do?id=${mem.id}&page=${paging.nextPageNo}" class="button primary disabled"><spring:message code="message.myGallery.next"/></a>
+							</c:if>
+							<c:if test="${paging.pageNo!=paging.finalPageNo}">
+								<a href="myArtist.do?id=${mem.id}&page=${paging.nextPageNo}" class="button primary"><spring:message code="message.myGallery.next"/></a>
+							</c:if>
+						</div>
+					</c:if>
+					<c:if test="${stat=='my'}">
+						<div class="paging" style="text-align: center; margin: 2em 0 0 0;">
+							<c:if test="${paging.pageNo==paging.firstPageNo}">
+								<a href="myGallery.do?artist=${mem.artist}&page=${paging.prevPageNo}" class="button primary disabled"><spring:message code="message.myGallery.prev"/></a>
+							</c:if>
+							<c:if test="${paging.pageNo!=paging.firstPageNo}">
+								<a href="myGallery.do?artist=${mem.artist}&page=${paging.prevPageNo}" class="button primary"><spring:message code="message.myGallery.prev"/></a>
+							</c:if>
+							<c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+								<c:if test="${paging.pageNo==i}">
+									<a href="myGallery.do?artist=${mem.artist}&page=${i}" class="button disabled">${i}</a>
+								</c:if>
+								<c:if test="${paging.pageNo!=i}">
+									<a href="myGallery.do?artist=${mem.artist}&page=${i}" class="button">${i}</a>
+								</c:if>
+							</c:forEach>
+							<c:if test="${paging.pageNo==paging.finalPageNo}">
+								<a href="myGallery.do?artist=${mem.artist}&page=${paging.nextPageNo}" class="button primary disabled"><spring:message code="message.myGallery.next"/></a>
+							</c:if>
+							<c:if test="${paging.pageNo!=paging.finalPageNo}">
+								<a href="myGallery.do?artist=${mem.artist}&page=${paging.nextPageNo}" class="button primary"><spring:message code="message.myGallery.next"/></a>
+							</c:if>
+						</div>
+					</c:if>
 			</div>
 		</div>
 

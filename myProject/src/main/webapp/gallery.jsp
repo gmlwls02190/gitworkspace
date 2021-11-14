@@ -2,15 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
-<title>Phantom by HTML5 UP</title>
+<title>HJ Art Gallery</title>
+<mytag:favicon/>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -32,12 +29,15 @@
 		<div id="main">
 			<div class="inner">
 				<header>
-					<h1>Gallery</h1>
+					<h1><spring:message code="message.gallery.main" /></h1>
 				</header>
+				<div style="text-align: end;">
+					<a href="insertArt.do" class="button primary"><spring:message code="message.gallery.addArt" /></a>
+				</div>
 				<section class="tiles">
 					<c:forEach var="v" items="${datas}">
 						<article class="style1">
-							<span class="image"><img src="${v.gallery}" alt="${v.title}" /></span>
+							<span class="image"><img src="/images/${v.gallery}" alt="${v.title}" /></span>
 							<a href="gallery.do?bid=${v.bid}">
 								<h2>${v.title}</h2>
 								<div class="content">
@@ -47,6 +47,28 @@
 						</article>
 					</c:forEach>
 				</section>
+					<div class="paging" style="text-align: center; margin: 2em 0 0 0;">
+						<c:if test="${paging.pageNo==paging.firstPageNo}">
+							<a href="galleryList.do?page=${paging.prevPageNo}" class="button primary disabled"><spring:message code="message.gallery.prev" /></a>
+						</c:if>
+						<c:if test="${paging.pageNo!=paging.firstPageNo}">
+							<a href="galleryList.do?page=${paging.prevPageNo}" class="button primary"><spring:message code="message.gallery.prev" /></a>
+						</c:if>
+						<c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+							<c:if test="${paging.pageNo==i}">
+								<a href="galleryList.do?page=${i}" class="button disabled">${i}</a>
+							</c:if>
+							<c:if test="${paging.pageNo!=i}">
+								<a href="galleryList.do?page=${i}" class="button">${i}</a>
+							</c:if>
+						</c:forEach>
+						<c:if test="${paging.pageNo==paging.finalPageNo}">
+							<a href="galleryList.do?page=${paging.nextPageNo}" class="button primary disabled"><spring:message code="message.gallery.next" /></a>
+						</c:if>
+						<c:if test="${paging.pageNo!=paging.finalPageNo}">
+							<a href="galleryList.do?page=${paging.nextPageNo}" class="button primary"><spring:message code="message.gallery.next" /></a>
+						</c:if>
+					</div>
 			</div>
 		</div>
 
@@ -63,4 +85,3 @@
 	<script src="assets/js/main.js"></script>
 
 </body>
-</html>

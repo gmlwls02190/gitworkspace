@@ -12,9 +12,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.github.scribejava.core.builder.ServiceBuilder;
-import com.github.scribejava.core.model.OAuth2AccessToken;
-import com.github.scribejava.core.oauth.OAuth20Service;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -39,7 +36,7 @@ public class NaverServiceImpl implements NaverService{
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=클라이언트아이디");
-			sb.append("&client_secret=클라이언트보안");
+			sb.append("&client_secret=보안키");
 			sb.append("&redirect_uri=리다이렉트주소");
 			sb.append("&code="+code);
 			sb.append("&state="+state);

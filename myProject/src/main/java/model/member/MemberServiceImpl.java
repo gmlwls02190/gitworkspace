@@ -22,6 +22,11 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public boolean updateMemberPW(MemberVO vo) {
+		return dao.updateMemberPW(vo);
+	}
+
+	@Override
 	public boolean deleteMember(MemberVO vo) {
 		return dao.deleteMember(vo);
 	}
@@ -35,5 +40,4 @@ public class MemberServiceImpl implements MemberService{
 	public List<MemberVO> getAllMember() {
 		return dao.getAllMember();
 	}
-
 }

@@ -12,8 +12,8 @@ public class GalleryServiceImpl implements GalleryService{
 	private GalleryDAO dao;
 	
 	@Override
-	public List<GalleryVO> getGalleryList(GalleryVO vo) {
-		return dao.getGalleryList(vo);
+	public List<GalleryVO> getGalleryList(GalleryVO vo,int start,int end) {
+		return dao.getGalleryList(vo,start,end);
 	}
 
 	@Override
@@ -34,6 +34,11 @@ public class GalleryServiceImpl implements GalleryService{
 	@Override
 	public boolean deleteGallery(GalleryVO vo) {
 		return dao.deleteGallery(vo);
+	}
+
+	@Override
+	public int totalGalleryCnt(GalleryVO vo) {
+		return dao.totalGalleryCnt(vo);
 	}
 
 }

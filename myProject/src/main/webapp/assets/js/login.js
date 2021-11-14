@@ -11,6 +11,9 @@ function googleLogin(){
 function naverLogin(){
 	document.location.href="naverLogin.do";
 }
+function newpw(){
+	window.open("toSendPW.do","","width=770, height=620, resizeable=no, scrollbar=no, status=no");
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 다음주소검색
 function SearchAddr(){
@@ -71,16 +74,16 @@ $(function(){
 	
 	/* 핸드폰번호 숫자만 입력 체크 */
 	$('#callNum').keyup(function(){
-		var callNumRegex=new RegExp("^(01[016789]{1})-([0-9]{4})-([0-9]{4})$","g");
+		var callNumRegex=new RegExp("^(01[016789]{1})([0-9]{4})([0-9]{4})$","g");
 		
-		if($('#callNum').val().length!=13 || callNumRegex.test($(this))==false){
+		if($('#callNum').val().length!=11 || callNumRegex.test($(this))==false){
 			$('#callNumCheck').text('');
-			$('#wrongNum').text('-을 포함한 핸드폰번호 13자리를 입력하세요');
+			$('#wrongNum').text('-을 제외한 핸드폰번호 11자리를 입력하세요');
 			$('#wrongNum').css('color','firebrick');
 			$('#wrongNum').css('font-weight','bold');
 		}
 		
-		if($('#callNum').val().length==13 && callNumRegex.test($(this).val())){
+		if($('#callNum').val().length==11 && callNumRegex.test($(this).val())){
 			$('#wrongNum').text('');
 			$('#callNumCheck').text('√');
 			$('#callNumCheck').css('color','green');
@@ -217,6 +220,75 @@ function checkart(){
 	});
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+// 회원가입공백체크
+function emptycheck(){
+	var id=$('#checkId').val();
+	var idCheck=$('#idCheck').text();
+	var pw=$('#checkPw').val();
+	var repw=$('#repw').val();
+	var artist=$('#checkArtist').val();
+	var artistCheck=$('#artistCheck').text();
+	var address=$('#addrNum').val();
+	var detailAddr=$('#detailAddr').val();
+	var email=$('#firstemail').val();
+	var callNum=$('#callNum').val();
+	
+	if(id==null || id==''){
+		alert('아이디를 입력해주세요');
+		$('#checkId').focus();
+		return false;
+	}
+	if(idCheck==null || idCheck==''){
+		alert('아이디 중복검사를 해주세요');
+		$('#checkID').focus();
+		return false;
+	}
+	if(pw==null || pw==''){
+		alert('비밀번호를 입력해주세요');
+		$('#checkPw').focus();
+		return false;
+	}
+	if(repw==null || repw==''){
+		alert('비밀번호 확인을 입력해주세요');
+		$('#repw').focus();
+		return false;
+	}
+	if(pw!=repw){
+		alert('비밀번호가 일치하지 않습니다');
+		$('#repw').focus();
+		return false;
+	}
+	if(artist==null || artist==''){
+		alert('작가명을 입력해주세요');
+		$('#checkArtist').focus();
+		return false;
+	}
+	if(artistCheck==null || artistCheck==''){
+		alert('작가명 중복검사를 해주세요');
+		$('#checkArt').focus();
+		return false;
+	}
+	if(address==null || address==''){
+		alert('주소를 입력해주세요');
+		$('#addrbtn').focus();
+		return false;
+	}
+	if(detailAddr==null || detailAddr==''){
+		alert('상세주소를 입력해주세요');
+		$('#detailAddr').focus();
+		return false;
+	}
+	if(email==null || email==''){
+		alert('이메일을 입력해주세요');
+		$('#firstemail').focus();
+		return false;
+	}
+	if(callNum==null || callNum==''){
+		alert('전화번호를 입력해주세요');
+		$('#callNum').focus();
+		return false;
+	}
+	
+	document.signUpForm.submit();
+	return true;
+}

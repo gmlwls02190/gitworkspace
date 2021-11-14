@@ -2,48 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
-<title>Phantom by HTML5 UP</title>
-<script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-	var selFile;
-	
-	$(document).ready(function(){
-		$("#fileUpload").on("change", handleImgFileSelect);
-	});
-	
-	function handleImgFileSelect(e){
-		var files=e.target.files;
-		var filesArr=Array.prototype.slice.call(files);
-		
-		filesArr.forEach(function(f){
-			if(!f.type.match("image.*")){
-				alert("이미지만 등록가능합니다")
-				return;
-			}
-			selFile=f;
-			
-			var reader=new FileReader();
-			reader.onload=function(e){
-				$("#preImg").attr("src",e.target.result);
-				$("#nowImg").hide();
-			}
-			reader.readAsDataURL(f);
-		});
-	}
-</script>
-<script type="text/javascript">
-	function deleteArt(bid){
-		document.location.href="deleteGallery.do?bid="+bid;
-	}
-</script>
+<title>HJ Art Gallery</title>
+<mytag:favicon/>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -66,7 +30,7 @@
 		<div id="main">
 			<div class="inner">
 				<header>
-					<h1>Edit the Gallery</h1>
+					<h1><spring:message code="message.editArt.main" /></h1>
 				</header>
 				<form action="updateGallery.do" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="bid" value="${data.bid}">
@@ -81,16 +45,16 @@
 						</div>
 						<div class="col-12">
 							<span class="image"><img id="preImg"/></span>
-							<span class="image" id="nowImg"><img src="${data.gallery}" alt="${data.title}"/></span>
+							<span class="image" id="nowImg"><img src="/images/${data.gallery}" alt="${data.title}"/></span>
 							<span><input type="file" name="fileUpload" id="fileUpload" ></span>
 						</div>
 						<div class="col-12">
-							<textarea rows="1" cols="200" placeholder="작품설명" name="info">${data.info}</textarea>
+							<textarea rows="1" cols="200" placeholder="<spring:message code='message.editArt.info' />" name="info">${data.info}</textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" value="Edit" class="primary"></li>
-								<li><input type="button" onClick="deleteArt(${data.bid})" value="Delete"></li>
+								<li><input type="submit" value="<spring:message code='message.editArt.edit' />" class="primary"></li>
+								<li><input type="button" onClick="deleteArt()" value="<spring:message code='message.editArt.delete' />"></li>
 							</ul>
 						</div>
 					</div>
@@ -105,10 +69,12 @@
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/editArt.js"></script>
 
 </body>
 </html>

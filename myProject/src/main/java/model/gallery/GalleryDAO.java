@@ -16,16 +16,43 @@ public class GalleryDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	private final String getAllSQL="select * from (select * from gallery order by bid desc) where rownum <= ?";
+	private final String getAllSQL="select * from (select rownum as rnum, a.* from (select * from gallery order by bid desc) a) where rnum between ? and ?";
 //	private final String myAllSQL="select * from gallery where id=? order by bid desc";
 	private final String artistAllSQL="select * from gallery where artist=? order by bid desc";
 	private final String getOneSQL="select * from gallery where bid=?";
-	private final String insertSQL="insert into gallery values((select nvl(max(bid),0)+1 from gallery),?,?,?,?,?,sysdate)";
+	private final String insertSQL="insert into gallery values((select nvl(max(bid),0)+1 from gallery),?,?,?,?,?,0,sysdate)";
 	private final String updateSQL="update gallery set title=?,info=?,gallery=?,wdate=sysdate where bid=?";
 	private final String deleteSQL="delete gallery where bid=?";
-
-	public ArrayList<GalleryVO> getGalleryList(GalleryVO vo) {
-		System.out.println("dao mcnt: "+vo.getMcnt());
+	private final String totalGalleryCntSQL="select count(*) as cnt from gallery";
+	private final String totalArtistCntSQL="select count(*) as cnt from gallery where artist=?";
+	
+	public int totalGalleryCnt(GalleryVO vo) {
+		System.out.println("totalGalleryCnt!!");
+		conn=JDBC.getConnection();
+		pstmt=null;
+		int totalCnt=0;
+		try {
+			if(vo.getArtist()==null || vo.getArtist()=="") {
+				pstmt=conn.prepareStatement(totalGalleryCntSQL);
+			}
+			else {
+				pstmt=conn.prepareStatement(totalArtistCntSQL);
+				pstmt.setString(1, vo.getArtist());
+			}
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				totalCnt=rs.getInt(1);
+			}
+			rs.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBC.close(conn, pstmt);
+		}
+		return totalCnt;
+	}
+	
+	public ArrayList<GalleryVO> getGalleryList(GalleryVO vo,int start,int end) {
 		conn=JDBC.getConnection();
 		pstmt=null;
 		ArrayList<GalleryVO> datas=new ArrayList<GalleryVO>();
@@ -33,7 +60,8 @@ public class GalleryDAO {
 			if(vo.getArtist()==null || vo.getArtist()=="") {
 				System.out.println("All!!");
 				pstmt=conn.prepareStatement(getAllSQL);
-				pstmt.setInt(1, vo.getMcnt());
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
 			}
 			else {
 				System.out.println("ArtistAll!!");

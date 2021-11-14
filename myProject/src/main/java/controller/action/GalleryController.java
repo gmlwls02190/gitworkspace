@@ -7,16 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import model.gallery.GalleryService;
 import model.gallery.GalleryVO;
+import model.page.Paging;
 
 @Controller
 public class GalleryController {
@@ -34,9 +36,9 @@ public class GalleryController {
 	
 	@RequestMapping("/main.do")
 	public String mainPage(GalleryVO vo,Model model) {
-		System.out.println("test: "+vo);
-		List<GalleryVO> datas=galleryService.getGalleryList(vo);
-		model.addAttribute("datas", datas);
+//		System.out.println("test: "+vo);
+//		List<GalleryVO> datas=galleryService.getGalleryList(vo);
+//		model.addAttribute("datas", datas);
 		
 		return "main.jsp";
 	}
@@ -47,35 +49,56 @@ public class GalleryController {
 	}
 	
 	@RequestMapping("/galleryList.do")
-	public String galleryList(@RequestParam(value="stat",defaultValue="",required=false)String stat,GalleryVO vo,Model model) {
-		if(vo.getMcnt()==0) {
-			vo.setMcnt(3);
-		}
-		List<GalleryVO> datas=galleryService.getGalleryList(vo);
+	public String galleryList(GalleryVO vo,Paging paging,Model model,HttpServletRequest request) {
+		int page=request.getParameter("page")==null?1:Integer.parseInt(request.getParameter("page"));
+		int totalCount=galleryService.totalGalleryCnt(vo);
+		System.out.println("totCnt: "+totalCount);
+		paging.setPageNo(page);
+		paging.setTotalCount(totalCount);
+		
+		page=((page-1)*6)+1;
+		paging.setPageSize(page+5);
+		
+		List<GalleryVO> datas=galleryService.getGalleryList(vo,page,paging.getPageSize());
 		model.addAttribute("datas", datas);
-		if(stat.equals("my")) {
-			return "myGallery.jsp";
-		}
+		model.addAttribute("paging", paging);
+		System.out.println("paging: "+paging.toString());
 		return "gallery.jsp";
 	}
 	
-	@RequestMapping("/moreList.do")
-	public String moreList(GalleryVO vo,Model model) {
-		System.out.println("more!!!!!");
-		System.out.println("mcnt: "+vo.getMcnt());
-		if(vo.getMcnt()==0) {
-			vo.setMcnt(6);
-		}
-		List<GalleryVO> datas=galleryService.getGalleryList(vo);
-		model.addAttribute("datas", datas);
+	@RequestMapping("/artistList.do")
+	public String artistList(GalleryVO vo,Paging paging,Model model,HttpServletRequest request) {
+		int page=request.getParameter("page")==null?1:Integer.parseInt(request.getParameter("page"));
+		int totalCount=galleryService.totalGalleryCnt(vo);
+		System.out.println("totCnt: "+totalCount);
+		paging.setPageNo(page);
+		paging.setTotalCount(totalCount);
 		
+		page=((page-1)*6)+1;
+		paging.setPageSize(page+5);
+		
+		List<GalleryVO> datas=galleryService.getGalleryList(vo,page,paging.getPageSize());
+		model.addAttribute("datas", datas);
+		model.addAttribute("paging", paging);
+		System.out.println("paging: "+paging.toString());
 		return "gallery.jsp";
 	}
 	
 	@RequestMapping("/myGallery.do")
-	public String myGallery(@RequestParam(value="stat",defaultValue="",required=false)String stat,GalleryVO vo,Model model) {
-		List<GalleryVO> datas=galleryService.getGalleryList(vo);
+	public String myGallery(Paging paging,GalleryVO vo,Model model,HttpServletRequest request) {
+		int page=request.getParameter("page")==null?1:Integer.parseInt(request.getParameter("page"));
+		int totalCount=galleryService.totalGalleryCnt(vo);
+		paging.setPageNo(page);
+		paging.setTotalCount(totalCount);
+		
+		page=((page-1)*6)+1;
+		paging.setPageSize(page+5);
+		
+		List<GalleryVO> datas=galleryService.getGalleryList(vo,page,paging.getPageSize());
 		model.addAttribute("datas", datas);
+		model.addAttribute("paging", paging);
+		model.addAttribute("stat", "my");
+		
 		return "myGallery.jsp";
 	}
 	
@@ -102,12 +125,12 @@ public class GalleryController {
 			String randName=UUID.randomUUID().toString();
 			randName=randName.replace("-", "").substring(22);
 			System.out.println(randName);
-			gallery.transferTo(new File("D:\\JAVAKHJ_0622\\HEEJIN_0622\\resource\\images\\"+randName+fileName));
+			gallery.transferTo(new File("D:\\JAVA\\HEEJIN_0622\\resource\\images\\"+randName+fileName));
 			//-------------------------------------------------------------------------------------
-			vo.setGallery("\\images\\"+randName+fileName);
+			vo.setGallery(randName+fileName);
 		}// /images/filename.jpg
 		galleryService.insertGallery(vo);
-		return "main.do";
+		return "redirect:galleryList.do";
 	}
 	
 	@RequestMapping("/editGallery.do")
@@ -127,9 +150,9 @@ public class GalleryController {
 			String randName=UUID.randomUUID().toString();
 			randName=randName.replace("-", "").substring(22);
 			System.out.println(randName);
-			gallery.transferTo(new File("D:\\JAVAKHJ_0622\\HEEJIN_0622\\resource\\images\\"+randName+fileName));
+			gallery.transferTo(new File("D:\\JAVA\\HEEJIN_0622\\resource\\images\\"+randName+fileName));
 			//-------------------------------------------------------------------------------------
-			vo.setGallery("\\images\\"+randName+fileName);
+			vo.setGallery(randName+fileName);
 		}
 		galleryService.updateGallery(vo);
 		return "gallery.do?bid="+vo.getBid();

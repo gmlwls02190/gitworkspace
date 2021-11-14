@@ -2,19 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Phantom by HTML5 UP</title>
-<script type="text/javascript">
-	function deleteMember(id) {
-		var input=confirm('정말 탈퇴하시겠습니까?');
-		
-		if(input){
-			document.location.href = "deleteMember.do?id=" + id;
-		}
-	}
-</script>
+<title>HJ Art Gallery</title>
+<mytag:favicon/>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -36,7 +29,7 @@
 		<div id="main">
 			<div class="inner">
 				<header>
-					<h1>Edit the Artist</h1>
+					<h1><spring:message code="message.editMember.main"/></h1>
 				</header>
 				<section class="tiles">
 					<article class="signUpform">
@@ -55,7 +48,7 @@
 								</div>
 								<div class="col-12">
 									<input type="text" name="addrNum" id="addrNum" class="signUpMenu" value="${mem.addrNum}" />
-									<input type=button name="address" id="addrbtn" class="signUpCheck" value="Address" onClick="SearchAddr()" style="overflow: visible !important;"/>
+									<input type=button name="address" id="addrbtn" class="signUpCheck" value="<spring:message code='message.editMember.addr'/>" onClick="SearchAddr()" style="overflow: visible !important;"/>
 									<input type="text" name="roadAddr" id="roadAddr" class="signUpMenu" value="${mem.roadAddr}" />
 									<input type="text" name="detailAddr" id="detailAddr" class="signUpMenu" value="${mem.detailAddr}" />
 								</div>
@@ -93,8 +86,8 @@
 								</div>
 								<div class="col-12">
 									<ul class="actions">
-										<li><input type="submit" value="Edit" class="primary" /></li>
-										<li><input type="button" onClick="deleteMember('${mem.id}')" value="Delete" /></li>
+										<li><input type="submit" value="<spring:message code='message.editMember.edit'/>" class="primary" /></li>
+										<li><input type="button" onClick="deleteMember()" value="<spring:message code='message.editMember.delete'/>" /></li>
 									</ul>
 								</div>
 							</div>
@@ -111,10 +104,16 @@
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/editMember.js"></script>
+	<script src="assets/js/login.js"></script>
+	
+	<!-- 다음주소 api -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 </body>
 </html>

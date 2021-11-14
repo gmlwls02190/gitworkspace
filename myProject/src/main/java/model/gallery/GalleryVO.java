@@ -12,9 +12,9 @@ public class GalleryVO {
 	private String artist;
 	private String info;
 	private String gallery;
+	private int likeCnt;
 	private MultipartFile fileUpload;
 	private Date wdate;
-	private int mcnt;
 	
 //	private String condition;
 //	private String keyword;
@@ -67,6 +67,12 @@ public class GalleryVO {
 	public void setGallery(String gallery) {
 		this.gallery = gallery;
 	}
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 	public MultipartFile getFileUpload() {
 		return fileUpload;
 	}
@@ -78,12 +84,6 @@ public class GalleryVO {
 	}
 	public void setWdate(Date wdate) {
 		this.wdate = wdate;
-	}
-	public int getMcnt() {
-		return mcnt;
-	}
-	public void setMcnt(int mcnt) {
-		this.mcnt = mcnt;
 	}
 	@Override
 	public String toString() {

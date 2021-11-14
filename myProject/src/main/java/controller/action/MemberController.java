@@ -14,6 +14,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping("toLogin.do")
+	@RequestMapping("/toLogin.do")
 	public String toLogin() {
 		return "login.jsp";
 	}
@@ -61,9 +62,16 @@ public class MemberController {
 			}
 			else {
 				// pw error
+				int loginCnt=Integer.parseInt(request.getParameter("loginCnt"));
+				int loginFail=0;
+				if(loginCnt>=0) {
+					loginFail=loginCnt+1;
+				}
+				System.out.println("loginFail: "+loginFail);
 				System.out.println("PW Error!!");
 				str="잘못된 비밀번호 입니다";
 				model.addAttribute("str", str);
+				model.addAttribute("loginCnt", loginFail);
 				return "toLogin.do?mode=login";
 			}
 		}
@@ -88,7 +96,7 @@ public class MemberController {
 	@RequestMapping("/signUp.do")
 	public String signUp(HttpServletRequest request,MemberVO vo) {
 		if(memberService.insertMember(vo)) {
-			return "toLogin.do?mode=login";
+			return "redirect:toLogin.do?mode=login";
 		}
 		else {
 			return "redirect:main.do";
@@ -113,7 +121,7 @@ public class MemberController {
 	@RequestMapping("/deleteMember.do")
 	public String deleteMember(MemberVO vo) {
 		if(memberService.deleteMember(vo)) {
-			return "logout.do";
+			return "redirect:logout.do";
 		}
 		else {
 			return "redirect:main.do";
@@ -160,12 +168,27 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		return "info.do";
+		return "redirect:info.do";
 	}
 	
 	@RequestMapping("/checkID.do")
 	public String checkID(MemberVO vo,PrintWriter out) {
 		if(memberService.getOneMember(vo)==null) {
+			System.out.println("if success");
+			out.print("success");
+		}
+		else {
+			System.out.println("if failed");
+			out.print("fail");
+		}
+		return null;
+	}
+	
+	@RequestMapping("/checkCallNum.do")
+	public String checkCallNum(MemberVO vo,PrintWriter out) {
+		String callNum=memberService.getOneMember(vo).getCallNum();
+		callNum=callNum.replace("-", "");
+		if(callNum.equals(vo.getCallNum())) {
 			System.out.println("if success");
 			out.print("success");
 		}
@@ -186,6 +209,56 @@ public class MemberController {
 			System.out.println("if failed");
 			out.print("fail");
 		}
+		return null;
+	}
+	
+	@RequestMapping("/toSendPW.do")
+	public String toSendPW() {
+		return "newPW.jsp";
+	}
+	
+	@RequestMapping("/sendNewPW.do")
+	public String sendNewPW(MemberVO vo,HttpServletRequest request,PrintWriter out) {
+		String to=request.getParameter("to");
+		String firstemail=request.getParameter("firstemail");
+		String lastemail=request.getParameter("lastemail");
+		String from=firstemail+lastemail;
+		String newpw=null;
+		System.out.println("from: "+from);
+		System.out.println("to: "+to);
+		Properties prop=System.getProperties();
+		prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.required", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.port", "587");
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.ssl.protocols", "TLSv1.2");
+		
+		Authenticator auth=new MailAuth();
+		Session session=Session.getDefaultInstance(prop,auth);
+		MimeMessage msg=new MimeMessage(session);
+		
+		try {
+			session.setDebug(true);
+			
+			newpw=RandomStringUtils.randomAlphabetic(15);
+			Address fromAddr=new InternetAddress(from);
+			Address toAddr=new InternetAddress(to);
+			msg.setSubject("[HJ Art Gallery] 임시 비밀번호 발급","UTF-8");
+			msg.setFrom(toAddr);
+			msg.addRecipient(Message.RecipientType.TO, fromAddr);
+			msg.setText("[HJ Art Gallery]\n임시비밀번호 [ "+newpw+" ]\n 로그인후 비밀번호를 변경해주시기 바랍니다.","UTF-8");
+			
+			Transport.send(msg);
+		}catch(Exception e) {
+			System.out.println("SendNewPW Error!!");
+			e.printStackTrace();
+			out.print("fail");
+		}
+		
+		vo.setPw(newpw);
+		memberService.updateMemberPW(vo);
+		out.print("<script>window.close();</script>");
 		return null;
 	}
 }

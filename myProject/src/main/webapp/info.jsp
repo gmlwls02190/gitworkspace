@@ -2,15 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 <head>
-<title>Generic - Phantom by HTML5 UP</title>
+<title>HJ Art Gallery</title>
+<mytag:favicon/>
 <style type="text/css">
 #map {
 	border: 2px solid pink;
@@ -26,9 +23,6 @@
 }
 </style>
 <meta charset="utf-8" />
-<script
-	src="http://maps.google.com/maps/api/js?key=앱키&region=kr"></script>
-<script src="assets/js/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <noscript>
@@ -48,25 +42,26 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<h1>HJ Art Gallery</h1>
+				<h1><spring:message code="message.info.main"/></h1>
 				<article>
 					<span class="image main" id="map" style="width: 100%;"></span>
 				</article>
-				<p>우리 사이트 설명문1</p>
-				<p>우리 사이트 설명문2</p>
+				<p><strong><spring:message code="message.info.address"/></strong></p>
+				<p><strong><spring:message code="message.info.callNum"/></strong></p>
+				<p><strong>[<spring:message code="message.info.vehicle"/>]<br><spring:message code="message.info.subway"/><br><spring:message code="message.info.bus"/><br><b style="color: royalblue;">Blue</b> : 146, 341, 360, 740, N13, N61, 147, 463<br><b style="color: green;">Green</b> : 4211<br><b style="color: firebrick;">Red</b> : 1100, 1700, 2000, 2000-1, 7007, 8001, 3600, 9600</strong></p>
 				
-				<h1>Contact</h1>
+				<h1><spring:message code="message.info.contact"/></h1>
 				<form method="post" action="qaMailSend.do">
 					<input type="hidden" name="to" value="ksh02190@gmail.com" />
 					<div class="row gtr-uniform">
 						<div class="col-6 col-12-xsmall">
-							<input type="text" name="title" id="demo-name" value="" placeholder="Title" />
+							<input type="text" name="title" id="demo-name" value="" placeholder="<spring:message code='message.info.title'/>" />
 						</div>
 						<div class="col-6 col-12-xsmall">
-							<input type="text" name="name" id="demo-name" value="" placeholder="Name" />
+							<input type="text" name="name" id="demo-name" value="" placeholder="<spring:message code='message.info.name'/>" />
 						</div>
 						<div class="col-6 col-12-xsmall">
-							<input type="text" name="firstemail" id="demo-email" value="" placeholder="Email" />
+							<input type="text" name="firstemail" id="demo-email" value="" placeholder="<spring:message code='message.info.email'/>" />
 						</div>
 						<div class="col-6 col-12-xsmall">
 							<select name="lastemail" id="demo-category">
@@ -76,22 +71,13 @@
 								<option>@hotmail.com</option>
 							</select>
 						</div>
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="demo-copy" name="demo-copy">
-							<label for="demo-copy">Email me a copy</label>
-						</div>
-						<div class="col-6 col-12-small">
-							<input type="checkbox" id="demo-human" name="demo-human" checked>
-							<label for="demo-human">Not a robot</label>
-						</div>
 						<div class="col-12">
-							<textarea name="content" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+							<textarea name="content" id="demo-message" placeholder="<spring:message code='message.info.message'/>" rows="6"></textarea>
 						</div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" value="Send Message"
-									class="primary" /></li>
-								<li><input type="reset" value="Reset" /></li>
+								<li><input type="submit" value="<spring:message code='message.info.send'/>" class="primary" /></li>
+								<li><input type="reset" value="<spring:message code='message.info.reset'/>" /></li>
 							</ul>
 						</div>
 					</div>
@@ -105,34 +91,18 @@
 
 	</div>
 
+	<!-- Google -->
+	<script src="http://maps.google.com/maps/api/js?key=앱키&region=kr"></script>
+	
 	<!-- Scripts -->
-
-	<script type="text/javascript">
-	(function($){
-		var map;
-		function initMap(){
-			var ll={
-				lat : 37.50003,
-				lng : 127.03559
-			};
-			map = new google.maps.Map(document.getElementById('map'),{
-				zoom : 17,
-				center : ll
-			});
-			var marker = new google.maps.Marker({
-				position : ll,
-				map : map
-			});
-		}
-		initMap();
-	})(jQuery);
-</script>
-
 	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/info.js"></script>
+	
 
 </body>
 </html>

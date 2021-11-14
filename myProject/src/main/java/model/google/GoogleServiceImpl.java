@@ -35,8 +35,8 @@ public class GoogleServiceImpl implements GoogleService{
 			StringBuilder sb=new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=클라이언트아이디");
-			sb.append("&client_secret=클라이언트보안");
-			sb.append("&redirect_uri=라다이렉트주소");
+			sb.append("&client_secret=보안키");
+			sb.append("&redirect_uri=리다이렉트주소");
 			sb.append("&code=" + code);
 			bw.write(sb.toString());
 			bw.flush();
